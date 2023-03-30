@@ -62,8 +62,8 @@ nav ul li a:hover::after {
 
 /* responsive */
 
-@media (max-width:700px) {
 
+@media (max-width: 700px) {
     nav {
         position: relative;
         height: 10vh;
@@ -101,7 +101,7 @@ nav ul li a:hover::after {
 
     .list li {
         display: block;
-        background-color:var(--body_background);
+        background-color: var(--body_background);
     }
 
     .list li a {
@@ -114,10 +114,14 @@ nav ul li a:hover::after {
     }
 
     #toggler:checked~.menu {
+        height: 227px;
+    }
+
+    /* Click outside menu to close */
+    .menu.active {
         height: 450px;
     }
 }
-
 
 /* button -----------------------------*/
 .acc-btn {
