@@ -52,7 +52,7 @@ const Login = () => {
                     <input type="password" id="password" name="password" onChange={handleit} value={account.password} required />
                 </div>
                 <button type="submit" className='btn'>Login</button><br />
-                <p>Don't have account ?<NavLink to="/register" className='signup'>Register</NavLink></p>
+                <p>Don't have account ?<a href="/register" className='signup'>Register</a></p>
             </form>
             {showPopup && (
                 <div className={Popup.popup}>
