@@ -2,7 +2,8 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color:#AD8B73 ;
+    color: var(--body_color);
+    background-color: var(--body_background);
 }
 
 .hero,
@@ -91,7 +92,7 @@
 }
 
 .testimonial-card {
-    background-color: #CEAB93;
+    background-color: var(--body_cards);
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     margin: 20px;
@@ -129,15 +130,8 @@
     max-height: 25vh;
 }
 
-.testimonial-user,
-.testimonial-content h3,
-.testimonial-content h4 {
-    color: #444;
-}
-
 .testimonial-content h3 {
     font-size: 18px;
-    font-weight: 700;
     margin-bottom: 10px;
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
-import {NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './header.css'
+import Theme from '../utlis/Theme'
 const Header = ({ data }) => {
     const name = data && (data.class ? data.class : data.auth.slice(20, 30))
     return (
@@ -17,10 +18,14 @@ const Header = ({ data }) => {
             </div>
             {
                 data ?
-                    <a href='/' onClick={() => { localStorage.removeItem('Data') }} className='acc-btn'>Logout</a>
+                    <>
+                        <a href='/' onClick={() => { localStorage.removeItem('Data') }} className='acc-btn'>Logout</a>
+                        <Theme />
+                    </>
                     :
                     <>
                         <a href='/login' className='acc-btn' style={{ left: '20px' }}>Login</a>
+                        <Theme />
                     </>
             }
         </nav>

@@ -24,7 +24,7 @@ export function Home() {
                         </div>
                         <div className="testimonial-content">
                             <p className="testimonial-text">"I've been using this tool for a month and it has made my life so much easier! Creating a timetable used to take me hours, now it only takes minutes."</p>
-                            <p className="testimonial-user">- John Doe, Math Teacher</p>
+                            <h3 className="testimonial-user">- John Doe, Math Teacher</h3>
                         </div>
                     </div>
                     <div className="testimonial-card">
@@ -33,7 +33,7 @@ export function Home() {
                         </div>
                         <div className="testimonial-content">
                             <p className="testimonial-text">"As a new teacher, I was struggling with creating a timetable for my classes. This tool has been a lifesaver!"</p>
-                            <p className="testimonial-user">- Jane Smith, English Teacher</p>
+                            <h3 className="testimonial-user">- Jane Smith, English Teacher</h3>
                         </div>
                     </div>
                     <div className="testimonial-card">
@@ -42,7 +42,7 @@ export function Home() {
                         </div>
                         <div className="testimonial-content">
                             <p className="testimonial-text">"The best timetable maker out there! It's so easy to use and saves me so much time."</p>
-                            <p className="testimonial-user">- Tom Wilson, Science Teacher</p>
+                            <h3 className="testimonial-user">- Tom Wilson, Science Teacher</h3>
                         </div>
                     </div>
                 </div>

@@ -31,13 +31,14 @@
   overflow-x: auto;
 }
 
-table {
-  width: 100%;
+.timetable table {
+  width: 90%;
+  margin: auto;
   border-collapse: collapse;
 }
 
-th,
-td {
+.timetable th,
+.timetable td {
   padding: 10px;
   text-align: center;
   border: 1px solid #ccc;
@@ -49,6 +50,10 @@ td {
     flex-basis: 100%;
     margin-right: 0;
     margin-bottom: 10px;
+  }
+  .timetable{
+     width: 98%;
+     margin: auto;
   }
 }
 
