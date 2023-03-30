@@ -24,7 +24,7 @@ const Header = ({ data }) => {
                     </>
                     :
                     <>
-                        <a href='/login' className='acc-btn' style={{ left: '20px' }}>Login</a>
+                        <NavLink to='/login' className='acc-btn' style={{ left: '20px' }}>Login</NavLink>
                         <Theme />
                     </>
             }
