@@ -19,7 +19,7 @@ const Header = ({ data }) => {
             {
                 data ?
                     <>
-                        <a href='/' onClick={() => { localStorage.removeItem('Data') }} className='acc-btn'>Logout</a>
+                        <NavLink to='/' onClick={() => { localStorage.removeItem('Data') }} className='acc-btn'>Logout</NavLink>
                         <Theme />
                     </>
                     :
