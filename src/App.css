@@ -1,0 +1,147 @@
+.App {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color:#AD8B73 ;
+}
+
+.hero,
+.testimonials-section {
+    padding: 4rem 2rem;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-image {
+    max-width: 400px;
+    margin-right: 2rem;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: 20vh;
+}
+
+.hero-text {
+    max-width: 600px;
+    text-align: center;
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+
+
+.btn {
+    color: #090909;
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #E3CAA5;
+    border: 1px solid #FFFBE9;
+    transition: all .3s;
+    box-shadow: inset 0px 0px 5px #FFFBE9,
+        0px 0px 15px #FFFBE9;
+}
+
+.btn:active {
+    color: #666;
+    box-shadow: inset 4px 4px 12px #c5c5c5,
+        inset -4px -4px 12px #ffffff;
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-image,
+    .hero-text {
+        margin: 2rem 0;
+    }
+}
+
+/* testimonials   */
+.testimonials-section {
+    margin: 60px 0;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.testimonials-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.testimonial-card {
+    background-color: #CEAB93;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px;
+    max-width: 300px;
+    width: 100%;
+}
+
+.testimonial-image {
+    border-radius: 50%;
+    height: 100px;
+    margin: 20px auto;
+    overflow: hidden;
+    width: 100px;
+}
+
+.testimonial-image img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.testimonial-content {
+    padding: 20px;
+}
+
+.testimonial-content p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.testimonial-content p:nth-child(1) {
+    min-height: 18vh;
+    max-height: 25vh;
+}
+
+.testimonial-user,
+.testimonial-content h3,
+.testimonial-content h4 {
+    color: #444;
+}
+
+.testimonial-content h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.testimonial-content h4 {
+    font-size: 14px;
+    margin: 0;
+}

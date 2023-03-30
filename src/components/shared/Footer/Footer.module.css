@@ -1,0 +1,58 @@
+ /* Style for the footer */
+ footer {
+     margin-top: auto;
+     color: black;
+     padding: 40px 20px;
+ }
+
+ /* Style for the content */
+ .content {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     flex-wrap: wrap;
+ }
+
+ /* Style for the logo */
+ .logo {
+     font-size: 24px;
+     font-weight: 500;
+ }
+
+ /* Style for the social icons */
+ .socialicons {
+     display: flex;
+ }
+
+ /* Style for the social icon links */
+ .socialicons a {
+     display: inline-flex;
+     justify-content: center;
+     align-items: center;
+     background-color: #CEAB93;
+     color: #212529;
+     height: 40px;
+     width: 40px;
+     border-radius: 50%;
+     margin-left: 10px;
+     transition: all 0.3s ease;
+ }
+
+ /* Style for the social icon hover state */
+ .socialicons a:hover {
+     transform: translateY(-3px);
+     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+ }
+
+ /* Media query for responsiveness */
+ @media only screen and (max-width: 600px) {
+     .logo {
+         font-size: 1.3rem;
+     }
+
+     .socialicons a {
+         height: 30px;
+         width: 30px;
+         margin-left: 5px;
+     }
+ }

@@ -1,0 +1,61 @@
+.inputcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.leftinput {
+  flex-basis: 40%;
+  margin-right: 10px;
+}
+
+.rightinput {
+  flex-basis: 40%;
+}
+
+.inputlabel {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.inputfield {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.timetable {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+@media screen and (max-width: 768px) {
+  .leftinput,
+  .rightinput {
+    flex-basis: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+.break{
+  color: blue;
+  background-color:#ccc;
+}
+.active{
+  color: red;
+}

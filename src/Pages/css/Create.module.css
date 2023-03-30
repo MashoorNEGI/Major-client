@@ -1,0 +1,95 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 1rem;
+}
+
+.inputcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-wrap: wrap  ; */
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.inputwrapper {
+    width: 100%;
+    margin: 0.5rem;
+}
+
+.inputlabel {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.inputfield {
+    width: 70%;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+    .inputwrapper {
+        width: calc(50% - 0.75rem);
+    }
+
+    .rightinput {
+        margin-left: 1rem;
+    }
+}
+
+/* Timetable */
+.timetable {
+    width: 80%;
+    margin: 2% auto;
+    overflow-x: auto;
+}
+
+.timetable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.timetable th,
+.timetable td {
+    text-align: center;
+    border: 1px solid black;
+    padding: 15px;
+}
+
+.timetable input {
+    padding: 5px;
+    margin-bottom: 2px;
+    width: 100%;
+    border-radius: 0.25rem;
+    border: 2px solid #ccc;
+}
+
+.timetable th {
+    background-color: #eee;
+}
+
+@media only screen and (max-width: 768px) {
+    .timetable {
+        width: 90%;
+        margin: 5% 2%;
+    }
+
+    .timetable th,
+    .timetable td {
+        text-align: center;
+        border: 1px solid black;
+        padding: 5px;
+    }
+
+    .timetable input {
+        padding: 0;
+    }
+}
