@@ -22,13 +22,17 @@ const Header = ({ data }) => {
         };
     }, [ ref ]);
 
+    const handleMenuClick = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <nav ref={ref}>
             <input
                 type="checkbox"
                 id="toggler"
                 checked={isOpen}
-                onChange={() => setIsOpen(!isOpen)}
+                onChange={handleMenuClick}
             />
             <label htmlFor="toggler" className="hamburger">
                 <i className="ri-menu-line"></i>
@@ -36,16 +40,24 @@ const Header = ({ data }) => {
             <div className={`menu ${isOpen ? "active" : ""}`}>
                 <ul className="list">
                     <li className="navlinks">
-                        <NavLink to="/"> Home</NavLink>
+                        <NavLink to="/" onClick={handleMenuClick}>
+                            Home
+                        </NavLink>
                     </li>
                     <li className="navlinks">
-                        <NavLink to={`/view/${name}`}> Schedule</NavLink>
+                        <NavLink to={`/view/${name}`} onClick={handleMenuClick}>
+                            Schedule
+                        </NavLink>
                     </li>
                     <li className="navlinks">
-                        <NavLink to="/contact"> Contact</NavLink>
+                        <NavLink to="/contact" onClick={handleMenuClick}>
+                            Contact
+                        </NavLink>
                     </li>
                     <li className="navlinks">
-                        <NavLink to="/About"> About</NavLink>
+                        <NavLink to="/About" onClick={handleMenuClick}>
+                            About
+                        </NavLink>
                     </li>
                 </ul>
             </div>
@@ -64,11 +76,7 @@ const Header = ({ data }) => {
                 </>
             ) : (
                 <>
-                    <NavLink
-                        to="/login"
-                        className="acc-btn"
-                        style={{ left: "20px" }}
-                    >
+                    <NavLink to="/login" className="acc-btn" style={{ left: "20px" }}>
                         Login
                     </NavLink>
                     <Theme />
@@ -78,4 +86,4 @@ const Header = ({ data }) => {
     );
 };
 
-export default Header
+export default Header;
