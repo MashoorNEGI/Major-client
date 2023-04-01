@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "./css/header.css";
 import Theme from "../../utlis/Theme";
+import { FaSignOutAlt } from 'react-icons/fa'
 
 const Header = ({ data }) => {
     const name = data && (data.class ? data.class : data.auth.slice(20, 30));
@@ -63,7 +64,7 @@ const Header = ({ data }) => {
             </div>
             {data ? (
                 <>
-                    <a
+                    {/* <a
                         href="/"
                         onClick={() => {
                             localStorage.removeItem("Data");
@@ -72,7 +73,11 @@ const Header = ({ data }) => {
                     >
                         Logout
                     </a>
-                    <Theme />
+                    <Theme /> */}
+                    <FaSignOutAlt className="acc-btn" onClick={() => {
+                        localStorage.removeItem("Data");
+                        window.location = '/'
+                    }}/>
                 </>
             ) : (
                 <>

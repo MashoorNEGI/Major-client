@@ -14,7 +14,9 @@ import Login from './Pages/Login'
 import New from './Pages/New'
 import Protected from './components/Protect/Protected'
 import GoToTop from './utlis/GoTo';
+import Schedule from './Pages/Schedule'
 const App = () => {
+  const [ navVisible, showNavbar ] = React.useState(false);
   return (
     <>
       <BrowserRouter>
@@ -28,13 +30,15 @@ const App = () => {
                 <Route path="student" element={<Student />} />
                 <Route path="teacher" element={<Teacher />} />
               </Route>
-              <Route path='view/:name' element={< Protected Component={Timetable} />} />
+              <Route path='view' element={<Schedule visible={navVisible} show={showNavbar} />} >
+                <Route path=':name' element={< Protected Component={Timetable} />} />
+              </Route>
               <Route path='About' element={<About />} />
               <Route path='contact' element={<New />} />
             </Route>
             <Route path="*" element={<Error404 />} />
           </Routes>
-              <GoToTop />
+          <GoToTop />
         </div>
       </BrowserRouter>
     </>
