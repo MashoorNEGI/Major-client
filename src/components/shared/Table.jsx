@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Style from './Table.module.css';
+import Style from './css/Table.module.css';
 
 const Time = ({ timetable }) => {
     const days = timetable.days;

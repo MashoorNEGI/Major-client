@@ -1,5 +1,5 @@
 import React from 'react'
-import './error.css'
+import './css/error.css'
 const Error404 = () => {
     return (
         <div className='error-page'>

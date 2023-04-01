@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import Card from '../components/shared/cards/Cards'
+import Card from '../components/shared/Cards'
 const Login = () => {
     return (
         <>

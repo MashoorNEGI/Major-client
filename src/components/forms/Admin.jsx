@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Popup from './Popup.module.css'
-import { getLocalStorageItem, setLocalStorageItem } from '../shared/utlis/Localstorage';
+import Popup from './css/Popup.module.css'
+import { setLocalStorageItem } from '../../utlis/Localstorage';
 const Admin = () => {
     const [ showPopup, setShowPopup ] = useState(false);
     const [ account, setAccount ] = useState({

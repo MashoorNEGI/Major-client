@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
-import "./header.css";
-import Theme from "../utlis/Theme";
+import "./css/header.css";
+import Theme from "../../utlis/Theme";
 
 const Header = ({ data }) => {
     const name = data && (data.class ? data.class : data.auth.slice(20, 30));

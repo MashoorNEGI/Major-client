@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import Time from '../components/shared/Table/Table';
+import Time from '../components/shared/Table';
 import URL from '../services/URL'
-import { getLocalStorageItem, setLocalStorageItem } from '../components/shared/utlis/Localstorage';
+import { getLocalStorageItem } from '../utlis/Localstorage';
 function Timetable() {
   const [ timetableData, setTimetableData ] = useState(null);
   const { name } = useParams()
-  const field = name.length >5 ? 'users' : 'student'
+  const field = name.length > 5 ? 'users' : 'student'
   const getdata = () => {
     const { auth } = getLocalStorageItem('Data')
     if (name === getLocalStorageItem('Data').class || name === auth.slice(20, 30)) {

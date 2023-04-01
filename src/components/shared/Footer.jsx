@@ -1,11 +1,6 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom';
-import Style from './Footer.module.css'
+import Style from './css/Footer.module.css'
 const Footer = () => {
-    const location = useLocation();
-    if (location.pathname === '*') {
-        return null;
-    }
     return (
         <>
             <footer>

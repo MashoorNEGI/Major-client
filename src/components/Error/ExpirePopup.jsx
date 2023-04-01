@@ -1,5 +1,5 @@
 import React from 'react';
-import Style from './session.module.css';
+import Style from './css/session.module.css';
 
 const SessionExpiredPopup = ({ onClose }) => {
     return (

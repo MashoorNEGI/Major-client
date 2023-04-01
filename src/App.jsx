@@ -8,13 +8,12 @@ import Register from './Pages/Register'
 import Admin from './components/forms/Admin'
 import Student from './components/forms/Student'
 import Teacher from './components/forms/Teacher'
-import { getLocalStorageItem } from './components/shared/utlis/Localstorage';
 import Timetable from './Pages/TimeTable'
 import Index from './components/home/Home'
 import Login from './Pages/Login'
 import New from './Pages/New'
 import Protected from './components/Protect/Protected'
-import GoToTop from './components/shared/utlis/GoTo';
+import GoToTop from './utlis/GoTo';
 const App = () => {
   return (
     <>

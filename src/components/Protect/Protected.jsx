@@ -1,5 +1,5 @@
 import React from 'react'
-import { getLocalStorageItem, setLocalStorageItem } from '../shared/utlis/Localstorage';
+import { getLocalStorageItem } from '../../utlis/Localstorage';
 import Session from '../Error/ExpirePopup'
 const Protected = ({ Component }) => {
   const handleCloseSessionExpiredPopup = () => {
