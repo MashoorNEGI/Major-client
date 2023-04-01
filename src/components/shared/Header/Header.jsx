@@ -63,22 +63,22 @@ const Header = ({ data }) => {
             </div>
             {data ? (
                 <>
-                    <NavLink
-                        to="/"
+                    <a
+                        href="/"
                         onClick={() => {
                             localStorage.removeItem("Data");
                         }}
                         className="acc-btn"
                     >
                         Logout
-                    </NavLink>
+                    </a>
                     <Theme />
                 </>
             ) : (
                 <>
-                    <NavLink to="/login" className="acc-btn" style={{ left: "20px" }}>
+                    <a href="/login" className="acc-btn" style={{ left: "20px" }}>
                         Login
-                    </NavLink>
+                    </a>
                     <Theme />
                 </>
             )}
