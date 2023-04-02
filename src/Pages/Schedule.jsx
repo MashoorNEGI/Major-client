@@ -35,11 +35,11 @@ const Schedule = ({ visible, show }) => {
         </button>
         <div className={Style.navwidth}>
           <div className={Style.navwidth}>
-            <NavLink to="/dashboard" className={Style.navlink}>
+            <NavLink to="/view/fav" className={Style.navlink}>
               <MdFavoriteBorder size={ICON_SIZE} />
               <span>Favourite</span>
             </NavLink>
-            <NavLink to="/analytics" className={Style.navlink}>
+            <NavLink to="/view/search" className={Style.navlink}>
               <BiSearchAlt size={ICON_SIZE} />
               <span>Search</span>
             </NavLink>

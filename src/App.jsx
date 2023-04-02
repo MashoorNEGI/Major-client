@@ -7,12 +7,10 @@ import About from './Pages/About'
 import Register from './Pages/Register'
 import Loader from './components/shared/Loader'
 import GoToTop from './utlis/GoTo';
+import { Admin, Student, Teacher } from './components/forms/Wrap'
 import Schedule from './Pages/Schedule'
 const Protected = lazy(() => import('./components/Protect/Protected'));
 const Home = lazy(() => import('./Pages/Home'));
-const Admin = lazy(() => import('./components/forms/Admin'));
-const Student = lazy(() => import('./components/forms/Student'));
-const Teacher = lazy(() => import('./components/forms/Teacher'));
 const Timetable = lazy(() => import('./Pages/TimeTable'));
 const Index = lazy(() => import('./components/home/Home'));
 const Login = lazy(() => import('./Pages/Login'));
@@ -23,7 +21,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <div className='App'>
-          <Suspense fallback={<Loader/>}>
+          <Suspense fallback={<Loader />}>
             <Routes>
               <Route path='/' element={<Home />}>
                 <Route index element={<Index />} />
@@ -35,14 +33,15 @@ const App = () => {
                 </Route>
                 <Route path='view' element={<Schedule visible={navVisible} show={showNavbar} />} >
                   <Route path=':name' element={< Protected Component={Timetable} />} />
+                  <Route path='search' element={< Protected Component={Admin} />} />
                 </Route>
                 <Route path='About' element={<About />} />
                 <Route path='contact' element={<New />} />
               </Route>
               <Route path="*" element={<Error404 />} />
             </Routes>
-            </Suspense>
-            <GoToTop />
+          </Suspense>
+          <GoToTop />
         </div>
       </BrowserRouter>
     </>

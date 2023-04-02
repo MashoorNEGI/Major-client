@@ -3,7 +3,7 @@
     margin: auto;
     position: relative;
     width: 20em;
-    z-index: -1;
+    z-index: 1;
     height: 20em;
     font-size: 14px;
 }
@@ -31,7 +31,7 @@
 }
 
 .wheel {
-    background: radial-gradient(100% 100% at center, hsla(0, 0%, 60%, 0) 47.8%, hsl(0, 0%, 60%) 48%);
+    background: radial-gradient(100% 100% at center, hsla(0, 0%, 60%, 0) 47.8%, var(--body_cards) 48%);
     z-index: 2;
 }
 
