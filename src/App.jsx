@@ -1,44 +1,48 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import './App.css'
-import Home from './Pages/Home'
+// import Home from './Pages/Home'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Error404 from './components/Error/Error404'
 import About from './Pages/About'
 import Register from './Pages/Register'
-import Admin from './components/forms/Admin'
-import Student from './components/forms/Student'
-import Teacher from './components/forms/Teacher'
-import Timetable from './Pages/TimeTable'
-import Index from './components/home/Home'
-import Login from './Pages/Login'
-import New from './Pages/New'
-import Protected from './components/Protect/Protected'
+import Loader from './components/shared/Loader'
 import GoToTop from './utlis/GoTo';
 import Schedule from './Pages/Schedule'
+const Protected = lazy(() => import('./components/Protect/Protected'));
+const Home = lazy(() => import('./Pages/Home'));
+const Admin = lazy(() => import('./components/forms/Admin'));
+const Student = lazy(() => import('./components/forms/Student'));
+const Teacher = lazy(() => import('./components/forms/Teacher'));
+const Timetable = lazy(() => import('./Pages/TimeTable'));
+const Index = lazy(() => import('./components/home/Home'));
+const Login = lazy(() => import('./Pages/Login'));
+const New = lazy(() => import('./Pages/New'));
 const App = () => {
   const [ navVisible, showNavbar ] = React.useState(false);
   return (
     <>
       <BrowserRouter>
         <div className='App'>
-          <Routes>
-            <Route path='/' element={<Home />}>
-              <Route index element={<Index />} />
-              <Route path='Register' element={<Register />} />
-              <Route path='login' element={<Login />}>
-                <Route path="admin" element={<Admin />} />
-                <Route path="student" element={<Student />} />
-                <Route path="teacher" element={<Teacher />} />
+          <Suspense fallback={<Loader/>}>
+            <Routes>
+              <Route path='/' element={<Home />}>
+                <Route index element={<Index />} />
+                <Route path='Register' element={<Register />} />
+                <Route path='login' element={<Login />}>
+                  <Route path="admin" element={<Admin />} />
+                  <Route path="student" element={<Student />} />
+                  <Route path="teacher" element={<Teacher />} />
+                </Route>
+                <Route path='view' element={<Schedule visible={navVisible} show={showNavbar} />} >
+                  <Route path=':name' element={< Protected Component={Timetable} />} />
+                </Route>
+                <Route path='About' element={<About />} />
+                <Route path='contact' element={<New />} />
               </Route>
-              <Route path='view' element={<Schedule visible={navVisible} show={showNavbar} />} >
-                <Route path=':name' element={< Protected Component={Timetable} />} />
-              </Route>
-              <Route path='About' element={<About />} />
-              <Route path='contact' element={<New />} />
-            </Route>
-            <Route path="*" element={<Error404 />} />
-          </Routes>
-          <GoToTop />
+              <Route path="*" element={<Error404 />} />
+            </Routes>
+            </Suspense>
+            <GoToTop />
         </div>
       </BrowserRouter>
     </>
