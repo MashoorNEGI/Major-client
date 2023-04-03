@@ -7,17 +7,19 @@
     font-family: 'Noto Serif', serif;
     transition: all ease-in-out 0.3s;
 }
+
 :root {
     --body_background: #AD8B73;
-    --body_cards:#CEAB93;
+    --body_cards: #CEAB93;
     --body_color: black;
 }
 
-[data-theme="dark"]{
+[data-theme="dark"] {
     --body_background: #282c34;
-    --body_color:white;
-    --body_cards:#3d4349;
+    --body_color: white;
+    --body_cards: #3d4349;
 }
+
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -35,4 +37,12 @@
     background-color: #555;
 }
 
-
+.div-center {
+    max-height: 200vh;
+    margin: auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: first baseline;
+}

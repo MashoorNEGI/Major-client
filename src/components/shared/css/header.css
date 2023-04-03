@@ -5,13 +5,10 @@ nav ul {
 
 .active::after {
     content: "";
-    position: absolute;
     width: 100%;
     transform: scaleX(1);
     transform-origin: bottom left;
     height: 2px;
-    bottom: -2px;
-    left: 0;
     transition: transform .25s ease-out;
     background-color: var(--body_color);
 }

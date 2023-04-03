@@ -1,6 +1,6 @@
 import React from 'react'
 import Style from './css/Loader.module.css'
-const Loader = () => {
+export const Loader = () => {
     return (
         <div className={Style.loading}>
             <span></span>
@@ -12,4 +12,19 @@ const Loader = () => {
   )
 }
 
-export default Loader
+export const APIloader = () => {
+    return (
+        <div className={Style.API}>
+            <div className={Style.spinner}>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    )
+}

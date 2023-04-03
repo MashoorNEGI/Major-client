@@ -1,19 +1,24 @@
-import React from 'react'
-import { Outlet, NavLink } from 'react-router-dom'
+import React, { useEffect, useRef } from 'react'
+import { Outlet, Link } from 'react-router-dom'
+import { getLocalStorageItem } from '../utlis/Localstorage'
 import {
   FaAngleRight,
   FaAngleLeft,
   FaShoppingCart,
-  FaCog,
-  FaSignOutAlt,
   FaBars
 } from 'react-icons/fa';
 import { BiSearchAlt } from 'react-icons/bi'
-import { MdFavoriteBorder } from 'react-icons/md'
-import Style from './css/sidebar.module.css'
+import { MdFavoriteBorder, MdMenu, MdOutlineLogout } from 'react-icons/md'
+import Style from './css/schedule.module.css'
 const ICON_SIZE = 20;
-
 const Schedule = ({ visible, show }) => {
+  const Run = useRef(false)
+  useEffect(() => {
+    if (!Run.current) {
+      visible = false // set visible to false on route change
+    }
+  }, []);
+      Run.current = true
   return (
     <>
       <div className={Style.mobilenav}>
@@ -35,34 +40,41 @@ const Schedule = ({ visible, show }) => {
         </button>
         <div className={Style.navwidth}>
           <div className={Style.navwidth}>
-            <NavLink to="/view/fav" className={Style.navlink}>
+            <Link to={`/view/${getLocalStorageItem('Data').class}`} className={Style.navlink}>
               <MdFavoriteBorder size={ICON_SIZE} />
               <span>Favourite</span>
-            </NavLink>
-            <NavLink to="/view/search" className={Style.navlink}>
+            </Link>
+            <Link to="/view/search" className={Style.navlink}>
               <BiSearchAlt size={ICON_SIZE} />
               <span>Search</span>
-            </NavLink>
-            <NavLink to="/orders" className={Style.navlink}>
+            </Link>
+            <Link to="/orders" className={Style.navlink}>
               <FaShoppingCart size={ICON_SIZE} />
               <span>Orders</span>
-            </NavLink>
+            </Link>
           </div>
         </div>
 
         <div className={Style.navwidth}>
-          <NavLink to="/settings" className={Style.navlink}>
-            <FaCog size={ICON_SIZE} />
-            <span>Settings</span>
-          </NavLink>
-          <NavLink to="/Sign-out" className={Style.navlink}>
-            <FaSignOutAlt size={ICON_SIZE} />
+          <Link to="/view" className={Style.navlink}>
+            <MdMenu size={ICON_SIZE} />
+            <span>Main Menu</span>
+          </Link>
+          <Link to="/Sign-out" className={Style.navlink}>
+            <MdOutlineLogout size={ICON_SIZE} />
             <span>Logout</span>
-          </NavLink>
+          </Link>
         </div>
       </nav>
-
-      <Outlet />
+      {
+        window.location.pathname === '/view' ?
+          <section className={Style.hero}>
+            <h1 className={Style.title}>Welcome to our Timetable Site</h1>
+            <p className={Style.description}>Search and favorite your timetable to get quick access anytime!</p>
+            <button className={Style.button}>Logout</button>
+          </section>
+          : <Outlet />
+      }
     </>
   )
 }

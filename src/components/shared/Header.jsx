@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "./css/header.css";
 import Theme from "../../utlis/Theme";
-import { FaSignOutAlt } from 'react-icons/fa'
+import { MdOutlineLogout } from 'react-icons/md'
 
 const Header = ({ data }) => {
     const name = data && (data.class ? data.class : data.auth.slice(20, 30));
@@ -46,7 +46,7 @@ const Header = ({ data }) => {
                         </NavLink>
                     </li>
                     <li className="navlinks">
-                        <NavLink to={`/view/${name}`} onClick={handleMenuClick}>
+                        <NavLink to={name ? `/view` : '/login'} onClick={handleMenuClick}>
                             Schedule
                         </NavLink>
                     </li>
@@ -64,20 +64,11 @@ const Header = ({ data }) => {
             </div>
             {data ? (
                 <>
-                    {/* <a
-                        href="/"
-                        onClick={() => {
-                            localStorage.removeItem("Data");
-                        }}
-                        className="acc-btn"
-                    >
-                        Logout
-                    </a>
-                    <Theme /> */}
-                    <FaSignOutAlt className="acc-btn" onClick={() => {
+                    <MdOutlineLogout className="acc-btn" onClick={() => {
                         localStorage.removeItem("Data");
                         window.location = '/'
-                    }}/>
+                    }} />
+                    <Theme />
                 </>
             ) : (
                 <>
