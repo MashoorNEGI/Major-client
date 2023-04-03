@@ -1,13 +1,14 @@
 import React, { lazy, Suspense } from 'react'
 import './App.css'
 // import Home from './Pages/Home'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Error404 from './components/Error/Error404'
 import About from './Pages/About'
 import Register from './Pages/Register'
-import Loader from './components/shared/Loader'
+import {Loader} from './components/shared/Loader'
 import GoToTop from './utlis/GoTo';
 import { Admin, Student, Teacher } from './components/forms/Wrap'
+import { Search } from './components/shared/Wrap'
 import Schedule from './Pages/Schedule'
 const Protected = lazy(() => import('./components/Protect/Protected'));
 const Home = lazy(() => import('./Pages/Home'));
@@ -21,6 +22,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <div className='App'>
+          <GoToTop />
           <Suspense fallback={<Loader />}>
             <Routes>
               <Route path='/' element={<Home />}>
@@ -33,7 +35,7 @@ const App = () => {
                 </Route>
                 <Route path='view' element={<Schedule visible={navVisible} show={showNavbar} />} >
                   <Route path=':name' element={< Protected Component={Timetable} />} />
-                  <Route path='search' element={< Protected Component={Admin} />} />
+                  <Route path='search' element={< Protected Component={Search} />} />
                 </Route>
                 <Route path='About' element={<About />} />
                 <Route path='contact' element={<New />} />
@@ -41,7 +43,6 @@ const App = () => {
               <Route path="*" element={<Error404 />} />
             </Routes>
           </Suspense>
-          <GoToTop />
         </div>
       </BrowserRouter>
     </>
