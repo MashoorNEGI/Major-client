@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "./css/header.css";
-import Theme from "../../utlis/Theme";
+import Theme from "src/utils/Theme";
 import { MdOutlineLogout } from 'react-icons/md'
 
-const Header = ({ data }) => {
+const Header =({ data }) => {
+
     const name = data && (data.class ? data.class : data.auth.slice(20, 30));
     const [ isOpen, setIsOpen ] = useState(false);
     const ref = useRef(null);

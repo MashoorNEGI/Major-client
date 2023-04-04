@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Style from './css/Wrap.module.css'
 import axios from 'axios';
-import URL from '../../services/URL'
+import URL from 'src/services/URL'
 import { APIloader } from '../shared/Loader'
-import { getAuthorizationHeader } from '../../utlis/auth';
+import { getAuthorizationHeader } from 'src/utils/auth';
 export const Search = () => {
   const hasFetchedData = useRef(false)
   const [ data, setData ] = useState([]);

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Popup from './css/Popup.module.css'
 import axios from 'axios';
-import { setLocalStorageItem, getLocalStorageItem } from '../../utlis/Localstorage';
-import URL from '../../services/URL'
+import { setLocalStorageItem, getLocalStorageItem } from 'src/utils/Localstorage';
+import URL from 'src/services/URL'
 export const Admin = () => {
     const [ showPopup, setShowPopup ] = useState(false);
     const [ account, setAccount ] = useState({

@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import Time from '../components/shared/Table';
-import URL from '../services/URL'
-import { getLocalStorageItem } from '../utlis/Localstorage';
-import { getAuthorizationHeader } from '../utlis/auth'
-import { APIloader } from '../components/shared/Loader';
+import Time from 'src/components/shared/Table';
+import URL from 'src/services/URL'
+import { getLocalStorageItem } from 'src/utils/Localstorage';
+import { getAuthorizationHeader } from 'src/utils/auth'
+import { APIloader } from 'src/components/shared/Loader';
 function Timetable() {
   const Run = useRef(false)
   const [ loading, setLoading ] = useState(false);
