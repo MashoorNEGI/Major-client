@@ -1,10 +1,11 @@
 import React from 'react'
-import Header from '../components/shared/Header'
-import Footer from '../components/shared/Footer'
-import { getLocalStorageItem } from '../utlis/Localstorage';
+import Header from 'src/components/shared/Header'
+import Footer from 'src/components/shared/Footer'
+import { getLocalStorageItem } from 'src/utils/Localstorage';
 import { Outlet } from 'react-router-dom';
+
 const Home = () => {
-    const data = getLocalStorageItem('Data')
+const data = getLocalStorageItem('Data')
     return (
         <>
             <Header data={data} />
