@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import './css/Main.css'
 import { setLocalStorageItem } from 'src/utils/Localstorage';
-import Popup from 'src/components/forms/css/Popup.module.css'
 import URL from 'src/services/URL'
+import { Loggedin } from 'src/components/Popup';
 const Login = () => {
     const [ showPopup, setShowPopup ] = useState(false);
     const [ inputValue, setInputValue ] = useState("");
@@ -45,7 +45,7 @@ const Login = () => {
     }
     const handleClose = () => {
         setShowPopup(false);
-        window.location = '/sample'
+        window.location = '/schedule'
     };
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -105,12 +105,7 @@ const Login = () => {
                 <button type="submit" className='btn'>Register</button>
             </form>
             {showPopup && (
-                <div className={Popup.popup}>
-                    <div className='animate__animated animate__zoomIn animate__faster'>
-                        <p>You are Registered successfully</p>
-                        <button onClick={handleClose}>Close</button>
-                    </div>
-                </div>
+                <Loggedin close={handleClose}/>
             )}
         </>
     )

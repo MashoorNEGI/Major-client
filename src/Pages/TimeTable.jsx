@@ -7,7 +7,6 @@ import { getLocalStorageItem } from 'src/utils/Localstorage';
 import { getAuthorizationHeader } from 'src/utils/auth'
 import { APIloader } from 'src/components/shared/Loader';
 function Timetable() {
-  const Run = useRef(false)
   const [ loading, setLoading ] = useState(false);
   const [ timetableData, setTimetableData ] = useState(null);
   const { name } = useParams()

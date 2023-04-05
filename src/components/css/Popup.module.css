@@ -1,0 +1,51 @@
+.popup {
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+.popup div{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.popup div p {
+    color: black;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.popup div button {
+    background-color: black;
+    color: white;
+    transition: all ease-in-out 0.3s;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.popupcontent button:hover {
+    background-color: rgb(188, 182, 182);
+    color: black;
+}
+.popup .popupcontent {
+    transform: scale(1);
+}
+
+@media only screen and (max-width: 768px) {
+    .popupcontent {
+        max-width: 80%;
+    }
+}
