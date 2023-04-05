@@ -4,10 +4,9 @@ import { Outlet } from 'react-router-dom'
 import Style from './css/schedule.module.css'
 const ICON_SIZE = 20;
 const Schedule = () => {
-  const [ navVisible, showNavbar ] = React.useState(false);
+  const [ navVisible, showNavbar ] = React.useState('');
   return (
     <>
-      {console.log("render")}
       <Slidebar visible={navVisible} show={showNavbar} ICON_SIZE={ICON_SIZE} />
       {
         window.location.pathname === '/view' ?
@@ -22,4 +21,4 @@ const Schedule = () => {
   )
 }
 
-export default Schedule
+export default React.memo(Schedule)

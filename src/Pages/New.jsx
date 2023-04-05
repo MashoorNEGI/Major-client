@@ -37,7 +37,6 @@ function TimeTable() {
             const newData = [ ...prevData ];
             newData[ row ][ col ][ field ] = value;
             console.log(data)
-            console.log(data)
             return newData;
         });
     };
