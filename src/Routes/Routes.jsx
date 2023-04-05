@@ -10,7 +10,7 @@ import { Search } from 'src/components/shared/Wrap'
 import Schedule from 'src/Pages/Schedule'
 const Protected = lazy(() => import('src/components/Protected'));
 const Home = lazy(() => import('src/Pages/Home'));
-const Timetable = lazy(() => import('src/Pages/TimeTable'));
+const Timetable = lazy(() => import('src/components/TimeTable'));
 const Index = lazy(() => import('src/components/home/Home'));
 const Login = lazy(() => import('src/Pages/Login'));
 const New = lazy(() => import('src/Pages/New'));

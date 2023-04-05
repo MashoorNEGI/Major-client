@@ -70,7 +70,6 @@ export const Teacher = () => {
     const handleClose = () => {
         setShowPopup(false);
         const { auth } = getLocalStorageItem('Data')
-        const route = auth.slice(20, 30)
         window.location = `/view`
     };
     const handleSubmit = async (event) => {
@@ -113,6 +112,7 @@ export const Teacher = () => {
 }
 
 export const Student = () => {
+    const [ loading, setLoading ] = useState(false);
     const [ showPopup, setShowPopup ] = useState(false);
     const [ account, setAccount ] = useState({
         enroll_no: '',
@@ -120,7 +120,6 @@ export const Student = () => {
     });
     const handleClose = () => {
         const data = getLocalStorageItem('Data');
-        const myClass = data.class;
         window.location = `/view`
     };
     let username, values
@@ -133,6 +132,7 @@ export const Student = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
+            setLoading(true);
             const res = await axios.post(`${URL}/student/signin`, account)
             if (res.data.auth) {
                 setLocalStorageItem('Data', res.data, new Date().getTime() + 3600 * 1000);

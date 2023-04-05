@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Time from 'src/components/shared/Table';
 import URL from 'src/services/URL'
 import { getLocalStorageItem } from 'src/utils/Localstorage';
-import { getAuthorizationHeader } from 'src/utils/auth'
+import { getAuthorizationHeader } from 'src/services/auth'
 import { APIloader } from 'src/components/shared/Loader';
 function Timetable() {
   const [ loading, setLoading ] = useState(false);
@@ -13,7 +13,6 @@ function Timetable() {
   const field = name.length > 5 ? 'users' : 'student'
   useEffect(() => {
     let isMounted = true;
-
     const fetchData = async () => {
       const { auth } = getLocalStorageItem('Data');
       if (name || name === auth.slice(20, 30)) {

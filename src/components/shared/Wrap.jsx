@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import Style from './css/Wrap.module.css'
 import axios from 'axios';
 import URL from 'src/services/URL'
-import { APIloader } from '../shared/Loader'
-import { getAuthorizationHeader } from 'src/utils/auth';
+import { APIloader } from './Loader'
+import { getAuthorizationHeader } from 'src/services/auth';
 export const Search = () => {
   const hasFetchedData = useRef(false)
   const [ data, setData ] = useState([]);
@@ -15,7 +15,7 @@ export const Search = () => {
     try {
       const response = await axios.get(`${URL}/timetables`, {
         headers: {
-         Authorization: getAuthorizationHeader()
+          Authorization: getAuthorizationHeader()
         }
       });
       setData(response.data);
