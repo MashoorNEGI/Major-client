@@ -5,7 +5,7 @@ import About from 'src/Pages/About'
 import Register from 'src/Pages/Register'
 import { Loader } from 'src/components/shared/Loader'
 import GoToTop from 'src/utils/GoTo';
-import { Admin, Student, Teacher } from 'src/components/Wrap'
+import { Admin, Student, Teacher } from 'src/components/Forms'
 import { Search } from 'src/components/shared/Wrap'
 import Schedule from 'src/Pages/Schedule'
 const Protected = lazy(() => import('src/components/Protected'));
