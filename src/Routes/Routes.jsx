@@ -13,7 +13,8 @@ const Home = lazy(() => import('src/Pages/Home'));
 const Timetable = lazy(() => import('src/components/TimeTable'));
 const Index = lazy(() => import('src/components/home/Home'));
 const Login = lazy(() => import('src/Pages/Login'));
-const New = lazy(() => import('src/Pages/New'));
+const Contact = lazy(()=> import('src/Pages/Contact'))
+// const New = lazy(() => import('src/Pages/New'));
 const Routes = () => {
     return (
         <>
@@ -33,7 +34,7 @@ const Routes = () => {
                             <Route path='search' element={< Protected Component={Search} />} />
                         </Route>
                         <Route path='About' element={<About />} />
-                        <Route path='contact' element={<New />} />
+                        <Route path='contact' element={<Contact />} />
                     </Route>
                     <Route path="*" element={<Error404 />} />
                 </Switch>

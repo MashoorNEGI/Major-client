@@ -139,3 +139,37 @@
     font-size: 14px;
     margin: 0;
 }
+
+
+
+.btn-print{
+    position: absolute;
+    right: 24%;
+    text-align: center;
+    bottom: 0;
+}
+
+
+@media print {
+    .timetable-container.print-mode {
+        /* Apply print-specific styles */
+        font-size: 12pt;
+        margin: 0.5in;
+        /* etc. */
+    }
+}
+
+@media print {
+    .div-center {
+        padding: 0;
+    }
+
+    .print-mode {
+        margin: 0;
+        padding: 0;
+    }
+        nav,
+        footer,.btn-print{
+            display: none;
+        }
+}

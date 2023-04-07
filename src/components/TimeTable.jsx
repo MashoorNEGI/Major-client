@@ -10,6 +10,7 @@ function Timetable() {
   const [ loading, setLoading ] = useState(false);
   const [ timetableData, setTimetableData ] = useState(null);
   const { name } = useParams()
+  const [ printMode, setPrintMode ] = useState(false);
   const field = name.length > 5 ? 'users' : 'student'
   useEffect(() => {
     let isMounted = true;
@@ -32,6 +33,7 @@ function Timetable() {
             console.log(response.data);
           }
         } catch (error) {
+          setLoading(false);
           console.error(error);
         }
       }
@@ -43,13 +45,23 @@ function Timetable() {
       isMounted = false;
     };
   }, [ name, field ]);
+
+
+  const handlePrint = () => {
+    setPrintMode(true);
+    window.print();
+    setPrintMode(false);
+  };
   return (
     loading ?
       <APIloader /> :
       timetableData
-        ? <div>
-          <h1 className='text-center'>{name} Timetable</h1>
+        ? <div className={`div-center ${printMode ? 'print-mode' : ''}`}>
+          <h1 className='text-center'>{name}Timetable</h1>
           <Time timetable={timetableData} />
+          <button className="btn btn-print" onClick={handlePrint}>
+            Print
+          </button>
         </div>
         : <h1 className='text-center'>Data Not Found</h1>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Style from './css/Table.module.css';
 
 const Time = ({ timetable }) => {
