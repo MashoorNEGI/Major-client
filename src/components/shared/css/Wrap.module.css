@@ -40,8 +40,6 @@ input:hover {
     perspective: 2000px;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: inline-flex;
-    margin: 20px 20px;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -105,4 +103,21 @@ p {
     .cover p {
         font-size: 1rem;
     }
+}
+
+.container {
+    display: inline-flex;
+    margin: 20px 20px;
+    padding: 20px;
+    background-color: red;
+    position: relative;
+}
+
+.fa-heart-o {
+    width: 90px;
+    color: black;
+}
+
+.fa-heart {
+    color: red;
 }

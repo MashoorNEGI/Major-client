@@ -33,8 +33,6 @@ export const Search = () => {
     }
   }, [ hasFetchedData ]);
 
-
-
   return (
     <>
       <div className='div-center'>
@@ -48,12 +46,17 @@ export const Search = () => {
                 return search === ' ' ? data : data.class.toLowerCase().includes(search);
               }).map((data, i) => {
                 return (
-                  <div key={i} className={Style.book} onClick={() => {
-                    window.location = `/view/${data.class}`
-                  }}>
-                    <p>CLICK ME</p>
-                    <div key={i} className={Style.cover}>
-                      <p>{data.class}</p>
+                  <div key={i} className={Style.container}>
+                    <button id={Style.heartbtn}>
+                      <i class="fa fa-heart-o"></i>
+                    </button>
+                    <div className={Style.book} onClick={() => {
+                      window.location = `/view/${data.class}`
+                    }}>
+                      <p>CLICK ME</p>
+                      <div key={i} className={Style.cover}>
+                        <p>{data.class}</p>
+                      </div>
                     </div>
                   </div>
                 )
