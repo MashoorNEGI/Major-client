@@ -8,6 +8,9 @@ export default defineConfig({
     alias: {
       src: "/src",
     },
+    define: {
+      'process.env': process.env
+    }
   },
   plugins: [ react() ],
 })
