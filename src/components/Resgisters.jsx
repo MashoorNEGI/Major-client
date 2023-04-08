@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import './css/Main.css'
+import 'src/Pages/css/main.css'
 import { setLocalStorageItem } from 'src/utils/Localstorage';
 import { Loggedin } from 'src/components/Popup';
 import ApiRequest from 'src/API/apirequest';
-const Login = () => {
+export const Register1 = () => {
     const [ showPopup, setShowPopup ] = useState(false);
     const [ inputValue, setInputValue ] = useState("");
     const [ labels, setLabels ] = useState([]);
@@ -105,4 +105,3 @@ const Login = () => {
     )
 }
 
-export default Login

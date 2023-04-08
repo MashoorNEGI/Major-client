@@ -98,7 +98,7 @@ export const Teacher = () => {
                     <input type="password" id="password" name="password" onChange={handleit} value={account.password} required />
                 </div>
                 <button type="submit" className='btn'>Login</button><br />
-                <p>Don't have account ?<a href="/register" className='signup'>Register</a></p>
+                <p>Don't have account ?<a href="/register/teacher" className='signup'>Register</a></p>
             </form>
             {showPopup && (
                 <Loggedin close={handleClose} />
@@ -149,6 +149,7 @@ export const Student = () => {
                     <input type="password" id="password" name="password" onChange={handleit} value={account.password} required />
                 </div>
                 <button type="submit" className='btn'>Login</button><br />
+                <p>Don't have account ?<a href="/register/student" className='signup'>Register</a></p>
             </form>
             {showPopup && (
                 <Loggedin close={handleClose} />
@@ -156,3 +157,4 @@ export const Student = () => {
         </>
     )
 }
+
