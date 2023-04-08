@@ -13,7 +13,7 @@ const Home = lazy(() => import('src/Pages/Home'));
 const Timetable = lazy(() => import('src/components/TimeTable'));
 const Index = lazy(() => import('src/components/home/Home'));
 const Login = lazy(() => import('src/Pages/Login'));
-const Contact = lazy(()=> import('src/Pages/Contact'))
+const Contact = lazy(() => import('src/Pages/Contact'))
 // const New = lazy(() => import('src/Pages/New'));
 const Routes = () => {
     return (
@@ -29,9 +29,9 @@ const Routes = () => {
                             <Route path="student" element={<Student />} />
                             <Route path="teacher" element={<Teacher />} />
                         </Route>
-                        <Route path='view' element={<Schedule />} >
-                            <Route path=':name' element={< Protected Component={Timetable} />} />
-                            <Route path='search' element={< Protected Component={Search} />} />
+                        <Route path='view' element={<Protected Component={Schedule} />} >
+                            <Route path=':name' element={<Timetable/>} />
+                            <Route path='search' element={<Search/>} />
                         </Route>
                         <Route path='About' element={<About />} />
                         <Route path='contact' element={<Contact />} />

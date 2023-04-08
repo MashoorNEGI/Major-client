@@ -118,7 +118,7 @@
 
 
 .hero {
-    background-image: linear-gradient(rgba(149, 149, 176, 0.5), rgba(90, 90, 69, 0.5)), url('banner.jpg');
+    background-image: linear-gradient(rgba(149, 149, 176, 0.5), rgba(90, 90, 69, 0.5)), url('/banner.jpg');
     background-size: cover;
     color: #fff;
     display: flex;
