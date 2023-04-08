@@ -57,7 +57,7 @@ function Timetable() {
       <APIloader /> :
       timetableData
         ? <div className={`div-center ${printMode ? 'print-mode' : ''}`}>
-          <h1 className='text-center'>{name}Timetable</h1>
+          <h1 className='text-center'>{name} Timetable</h1>
           <Time timetable={timetableData} />
           <button className="btn btn-print" onClick={handlePrint}>
             Print
