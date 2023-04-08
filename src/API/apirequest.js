@@ -2,6 +2,7 @@ import axios from 'axios';
 import { getLocalStorageItem } from 'src/utils/Localstorage'
 
 const API_BASE_URL = import.meta.env.VITE_APP_URL;
+console.log(API_BASE_URL)
 
 const getAuthorizationHeader = () => {
     // implementation
