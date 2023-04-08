@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import './css/Main.css'
 import { setLocalStorageItem } from 'src/utils/Localstorage';
-import URL from 'src/services/URL'
 import { Loggedin } from 'src/components/Popup';
+import ApiRequest from 'src/API/apirequest';
 const Login = () => {
     const [ showPopup, setShowPopup ] = useState(false);
     const [ inputValue, setInputValue ] = useState("");
@@ -50,16 +49,11 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const res = await axios.post(`${URL}/users/register`, account);
-            if (res.status === 200) {
-                setLocalStorageItem('Data', res.data, new Date().getTime() + 3600 * 1000);
-                setShowPopup(true);
-            }
+            const res = await ApiRequest('users/register', 'POST', account, { authorization: false })
+            setLocalStorageItem('Data', res.data, new Date().getTime() + 3600 * 1000);
+            setShowPopup(true);
         } catch (error) {
             console.warn(error)
-            if (error.response.status === 400) {
-                alert(error.response.data.error)
-            }
         }
     }
     return (
@@ -105,7 +99,7 @@ const Login = () => {
                 <button type="submit" className='btn'>Register</button>
             </form>
             {showPopup && (
-                <Loggedin close={handleClose}/>
+                <Loggedin close={handleClose} />
             )}
         </>
     )

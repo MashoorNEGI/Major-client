@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Style from './css/Wrap.module.css'
-import axios from 'axios';
-import URL from 'src/services/URL'
 import { APIloader } from './Loader'
-import { getAuthorizationHeader } from 'src/services/auth';
+import ApiRequest from 'src/API/apirequest';
 export const Search = () => {
   const hasFetchedData = useRef(false)
   const [ data, setData ] = useState([]);
@@ -13,12 +11,8 @@ export const Search = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${URL}/timetables`, {
-        headers: {
-          Authorization: getAuthorizationHeader()
-        }
-      });
-      setData(response.data);
+      const response = await ApiRequest('timetables', 'GET', null, { authorization: true })
+      setData(response);
     } catch (error) {
       console.log(error);
     } finally {
@@ -46,14 +40,14 @@ export const Search = () => {
                 return search === ' ' ? data : data.class.toLowerCase().includes(search);
               }).map((data, i) => {
                 return (
-                    <div key={i} className={Style.book} onClick={() => {
-                      window.location = `/view/${data.class}`
-                    }}>
-                      <p>CLICK ME</p>
-                      <div key={i} className={Style.cover}>
-                        <p>{data.class}</p>
-                      </div>
+                  <div key={i} className={Style.book} onClick={() => {
+                    window.location = `/view/${data.class}`
+                  }}>
+                    <p>CLICK ME</p>
+                    <div key={i} className={Style.cover}>
+                      <p>{data.class}</p>
                     </div>
+                  </div>
                 )
               })
           }

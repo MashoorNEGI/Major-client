@@ -1,50 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import Time from 'src/components/shared/Table';
-import URL from 'src/services/URL'
 import { getLocalStorageItem } from 'src/utils/Localstorage';
-import { getAuthorizationHeader } from 'src/services/auth'
 import { APIloader } from 'src/components/shared/Loader';
+import ApiRequest from 'src/API/apirequest';
 function Timetable() {
   const [ loading, setLoading ] = useState(false);
   const [ timetableData, setTimetableData ] = useState(null);
   const { name } = useParams()
   const [ printMode, setPrintMode ] = useState(false);
-  const field = name.length > 5 ? 'users' : 'student'
+  // const field = name.length > 5 ? 'users' : 'student'
   useEffect(() => {
     let isMounted = true;
     const fetchData = async () => {
       const { auth } = getLocalStorageItem('Data');
-      if (name || name === auth.slice(20, 30)) {
-        try {
-          setLoading(true);
-          const response = await axios.get(`${URL}/${field}/timetable/${name}`, {
-            headers: {
-              Authorization: getAuthorizationHeader(),
-              'Content-Type': 'application/json',
-              'If-None-Match': 'ETag-value-from-previous-request'
-            },
-            maxRedirects: 1
-          });
-          if (isMounted) {
-            setTimetableData(response.data);
-            setLoading(false);
-            console.log(response.data);
-          }
-        } catch (error) {
+      // const data = name === auth.split(".")[ 2 ].slice(0, 6) ? auth : name
+
+      try {
+        setLoading(true);
+        const response = await (name.length > 5 ? ApiRequest('users/timetable', 'GET', null, { authorization: true }) : ApiRequest(`student/timetable/${name}`, 'GET', null, { authorization: true }))
+        if (isMounted) {
+          setTimetableData(response);
           setLoading(false);
-          console.error(error);
+          console.log(response);
         }
+      } catch (error) {
+        setLoading(false);
+        console.error(error);
       }
-    };
+    }
 
     fetchData();
 
     return () => {
       isMounted = false;
     };
-  }, [ name, field ]);
+  }, [ name ]);
 
 
   const handlePrint = () => {

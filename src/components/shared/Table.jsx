@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Style from './css/Table.module.css';
 
 const Time = ({ timetable }) => {
     const days = timetable.days;
-    // const currentTime = '09:00'
-    // const currentday = 'Monday'
     const now = new Date();
     const options = { hour: '2-digit', minute: '2-digit' };
     const time = now.toLocaleTimeString('en-US', options).replace(/\s/g, '').slice(0, -2);
@@ -63,15 +61,6 @@ const Time = ({ timetable }) => {
     };
 
     const periodTimes = getPeriodTimes();
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            // setCurrentTime(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }));
-        }, 10000);
-
-        return () => {
-            clearInterval(intervalId);
-        };
-    }, []);
     return (
         <div className={Style.timetable}>
             <table>

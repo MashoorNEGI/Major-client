@@ -14,7 +14,8 @@ import { MdFavoriteBorder, MdMenu, MdOutlineLogout } from 'react-icons/md'
 export function Slidebar({
   show,
   visible,
-  ICON_SIZE
+  ICON_SIZE,
+  ID
 }) {
   const [ showPopup, setShowPopup ] = React.useState(false);
   const Logout = () => {
@@ -35,7 +36,7 @@ export function Slidebar({
       </button>
       <div className={Style.navwidth} onClick={() => show(!visible)}>
         <div className={Style.navwidth}>
-          <Link to={`/view/${getLocalStorageItem('Data').class}`} className={Style.navlink}>
+          <Link to={`/view/${ID}`} className={Style.navlink}>
             <MdFavoriteBorder size={ICON_SIZE} />
             <span>Favourite</span>
           </Link>

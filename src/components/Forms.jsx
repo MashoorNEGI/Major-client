@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import axios from 'axios';
-import { setLocalStorageItem, getLocalStorageItem } from 'src/utils/Localstorage';
-import URL from 'src/services/URL'
+import { setLocalStorageItem } from 'src/utils/Localstorage';
+import ApiRequest from 'src/API/apirequest';
 import { Loggedin } from './Popup'
 export const Admin = () => {
     const [ showPopup, setShowPopup ] = useState(false);
@@ -47,7 +46,7 @@ export const Admin = () => {
                 <button type="submit" className='btn'>Login</button><br />
             </form>
             {showPopup && (
-                <Loggedin close={handleClose}/>
+                <Loggedin close={handleClose} />
             )}
         </>
     )
@@ -69,16 +68,14 @@ export const Teacher = () => {
     // Handler for when the close button is clicked
     const handleClose = () => {
         setShowPopup(false);
-        const { auth } = getLocalStorageItem('Data')
         window.location = `/view`
     };
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const res = await axios.post(`${URL}/users/signin`, account
-            )
-            if (res.data.auth) {
-                setLocalStorageItem('Data', res.data, new Date().getTime() + 3600 * 1000);
+            const res = await ApiRequest('users/signin', 'POST', account, { authorization: false })
+            if (res.auth) {
+                setLocalStorageItem('Data', res, new Date().getTime() + 3600 * 1000);
             }
             setShowPopup(true);
         } catch (error) {
@@ -112,14 +109,12 @@ export const Teacher = () => {
 }
 
 export const Student = () => {
-    const [ loading, setLoading ] = useState(false);
     const [ showPopup, setShowPopup ] = useState(false);
     const [ account, setAccount ] = useState({
         enroll_no: '',
         password: '',
     });
     const handleClose = () => {
-        const data = getLocalStorageItem('Data');
         window.location = `/view`
     };
     let username, values
@@ -132,10 +127,9 @@ export const Student = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            setLoading(true);
-            const res = await axios.post(`${URL}/student/signin`, account)
-            if (res.data.auth) {
-                setLocalStorageItem('Data', res.data, new Date().getTime() + 3600 * 1000);
+            const res = await ApiRequest('student/signin', 'POST', account, { authorization: false })
+            if (res.auth) {
+                setLocalStorageItem('Data', res, new Date().getTime() + 3600 * 1000);
             }
             setShowPopup(true);
         } catch (error) {
