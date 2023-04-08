@@ -26,6 +26,7 @@ input:hover {
 }
 
 .book {
+    margin: 0 20px;
     position: relative;
     border-radius: 10px;
     width: 220px;
@@ -40,6 +41,7 @@ input:hover {
     perspective: 2000px;
     display: -webkit-box;
     display: -ms-flexbox;
+    display: inline-flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
