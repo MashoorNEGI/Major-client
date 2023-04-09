@@ -6,7 +6,7 @@ import { MdOutlineLogout } from 'react-icons/md'
 
 const Header =({ data }) => {
 
-    const name = data && (data.class ? data.class : data.auth.slice(20, 30));
+    // const name = data && (data.class ? data.class : data.auth.slice(20, 30));
     const [ isOpen, setIsOpen ] = useState(false);
     const ref = useRef(null);
 
@@ -47,7 +47,7 @@ const Header =({ data }) => {
                         </NavLink>
                     </li>
                     <li className="navlinks">
-                        <NavLink to={name ? `/view` : '/login'} onClick={handleMenuClick}>
+                        <NavLink to='/view' onClick={handleMenuClick}>
                             Schedule
                         </NavLink>
                     </li>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Time from 'src/components/shared/Table';
+import Time from 'src/components/Table';
 import { getLocalStorageItem } from 'src/utils/Localstorage';
 import { APIloader } from 'src/components/shared/Loader';
 import ApiRequest from 'src/API/apirequest';
