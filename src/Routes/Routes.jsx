@@ -1,7 +1,6 @@
 import React, { lazy, Suspense } from 'react'
 import { Routes as Switch, Route } from 'react-router-dom'
 import Error404 from 'src/components/Error/Error404'
-import About from 'src/Pages/About'
 import { Register1, Register2 } from 'src/components/Resgisters'
 import { Loader } from 'src/components/shared/Loader'
 import GoToTop from 'src/utils/GoTo';
@@ -10,6 +9,7 @@ import { Search } from 'src/components/shared/Wrap'
 import Schedule from 'src/Pages/Schedule'
 const Protected = lazy(() => import('src/components/Protected'));
 const Home = lazy(() => import('src/Pages/Home'));
+const About = lazy(() => import('src/Pages/About'));
 const Timetable = lazy(() => import('src/Pages/TimeTable'));
 const Index = lazy(() => import('src/components/home/Home'));
 const Login = lazy(() => import('src/Pages/Login'));

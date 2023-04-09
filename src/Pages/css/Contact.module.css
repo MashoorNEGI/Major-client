@@ -18,7 +18,7 @@
 
 #contact {
     border-radius: 5px;
-    background: #FFFBE9;
+    background: var(--body_cards);
     padding: 25px;
     margin: 15px 0;
     width: 50%;
