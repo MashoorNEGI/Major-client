@@ -13,6 +13,7 @@ export const Admin = () => {
         username = e.target.name
         values = e.target.value
         setAccount({ ...account, [ username ]: values })
+        console.log(values)
 
     }
     // Handler for when the close button is clicked

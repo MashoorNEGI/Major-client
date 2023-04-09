@@ -14,7 +14,7 @@ const Timetable = lazy(() => import('src/Pages/TimeTable'));
 const Index = lazy(() => import('src/components/home/Home'));
 const Login = lazy(() => import('src/Pages/Login'));
 const Contact = lazy(() => import('src/Pages/Contact'))
-const Control = lazy(() => import('src/Pages/New'));
+const Control = lazy(() => import('src/Pages/Controls'));
 const Routes = () => {
     return (
         <>

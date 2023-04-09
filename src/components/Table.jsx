@@ -4,11 +4,18 @@ import Style from './css/Table.module.css';
 const Time = ({ timetable }) => {
     const days = timetable.days;
     const now = new Date();
-    const options = { hour: '2-digit', minute: '2-digit' };
-    const time = now.toLocaleTimeString('en-US', options).replace(/\s/g, '').slice(0, -2);
     const day = now.toLocaleDateString('en-US', { weekday: 'long' });
+    const systemTime = new Date();
+    let hours = systemTime.getHours();
+    const minutes = systemTime.getMinutes();
+    // Convert to 24-hour format if PM
+    if (hours >= 12) {
+        hours += hours === 12 ? 0 : 12;
+    }
+    const time = `${hours}:${minutes}`;
     const currentTime = time // outputs something like "09:00"
     const currentday = day // outputs something like "Monday"
+
     // const [ currentTime, setCurrentTime ] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }));
     const getSlot = (day, slotIndex) => {
         const slot = day.periods[ slotIndex ];
