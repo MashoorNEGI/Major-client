@@ -19,12 +19,12 @@ export const Loggedout = () => {
         </div>
     )
 }
-export const Session = ({ onClose }) => {
+export const Warning = ({ onClose }) => {
     return (
         <div className={Style1.sessionexpiredpopup}>
             <div className={`${Style1.popupcontent} animate__animated animate__zoomIn`}>
                 <h2>Please Login</h2>
-                <p>looks like you didn't logged in yet</p>
+                <p>looks like you don't have permission</p>
                 <button className={Style1.closebutton} onClick={onClose}>Close</button>
             </div>
         </div>

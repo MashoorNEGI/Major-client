@@ -1,6 +1,6 @@
 import React from 'react'
 import { getLocalStorageItem } from 'src/utils/Localstorage';
-import { Session } from 'src/components/Popup'
+import { Warning } from 'src/components/Popup'
 const Protected = ({ Component }) => {
   const handleCloseSessionExpiredPopup = () => {
     window.location = '/login'
@@ -9,7 +9,7 @@ const Protected = ({ Component }) => {
     if (getLocalStorageItem('Data')) {
       return <Component />
     } else {
-      return <Session onClose={handleCloseSessionExpiredPopup} />
+      return <Warning onClose={handleCloseSessionExpiredPopup} />
     }
   }
   return (

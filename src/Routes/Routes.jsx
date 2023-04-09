@@ -14,7 +14,7 @@ const Timetable = lazy(() => import('src/Pages/TimeTable'));
 const Index = lazy(() => import('src/components/home/Home'));
 const Login = lazy(() => import('src/Pages/Login'));
 const Contact = lazy(() => import('src/Pages/Contact'))
-// const New = lazy(() => import('src/Pages/New'));
+const Control = lazy(() => import('src/Pages/New'));
 const Routes = () => {
     return (
         <>
@@ -34,6 +34,7 @@ const Routes = () => {
                             <Route path=':name' element={<Timetable />} />
                             <Route path='search' element={<Search />} />
                         </Route>
+                        <Route path='controls' element={<Protected Component={Control} />} />
                         <Route path='About' element={<About />} />
                         <Route path='contact' element={<Contact />} />
                     </Route>
