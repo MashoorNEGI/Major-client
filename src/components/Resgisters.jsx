@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import 'src/Pages/css/main.css'
+import './css/Main.css'
 import { setLocalStorageItem } from 'src/utils/Localstorage';
 import { Loggedin } from 'src/components/Popup';
 import ApiRequest from 'src/API/apirequest';
