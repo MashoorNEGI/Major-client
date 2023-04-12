@@ -7,6 +7,7 @@ import GoToTop from 'src/utils/GoTo';
 import { Admin, Student, Teacher } from 'src/components/Logins'
 import { Search } from 'src/components/shared/Wrap'
 import Schedule from 'src/Pages/Schedule'
+import Fetchuser from 'src/Pages/Sample'
 const Protected = lazy(() => import('src/components/Protected'));
 const Home = lazy(() => import('src/Pages/Home'));
 const About = lazy(() => import('src/Pages/About'));
@@ -21,7 +22,7 @@ const Routes = () => {
             <GoToTop />
             <Suspense fallback={<Loader />}>
                 <Switch>
-                    <Route path='/' element={<Home />}>
+                    <Route path='/' element={<Home/>}>
                         <Route index element={<Index />} />
                         <Route path='Register/student' element={<Register2 />} />
                         <Route path='Register/teacher' element={<Register1 />} />

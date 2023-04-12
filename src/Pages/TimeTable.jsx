@@ -13,16 +13,12 @@ function Timetable() {
   useEffect(() => {
     let isMounted = true;
     const fetchData = async () => {
-      const { auth } = getLocalStorageItem('Data');
-      // const data = name === auth.split(".")[ 2 ].slice(0, 6) ? auth : name
-
       try {
         setLoading(true);
         const response = await (name.length > 5 ? ApiRequest('users/timetable', 'GET', null, { authorization: true }) : ApiRequest(`student/timetable/${name}`, 'GET', null, { authorization: true }))
         if (isMounted) {
           setTimetableData(response);
           setLoading(false);
-          console.log(response);
         }
       } catch (error) {
         setLoading(false);
