@@ -16,10 +16,10 @@ export function Home() {
                     </div>
                 </div>
             </section>
-            <div className="testimonials-section">
+            <div className="testimonials-section" data-aos="fade-up">
                 <h2>What our users are saying</h2>
                 <div className="testimonials-container">
-                    <div className="testimonial-card">
+                    <div className="testimonial-card" data-aos="fade-right">
                         <div className="testimonial-image">
                             <img src="https://via.placeholder.com/150x150.png" alt="User Image" />
                         </div>
@@ -28,7 +28,7 @@ export function Home() {
                             <h3 className="testimonial-user">- John Doe, Math Teacher</h3>
                         </div>
                     </div>
-                    <div className="testimonial-card">
+                    <div className="testimonial-card" data-aos="fade-up">
                         <div className="testimonial-image">
                             <img src="https://via.placeholder.com/150x150.png" alt="User Image" />
                         </div>
@@ -37,7 +37,7 @@ export function Home() {
                             <h3 className="testimonial-user">- Jane Smith, English Teacher</h3>
                         </div>
                     </div>
-                    <div className="testimonial-card">
+                    <div className="testimonial-card" data-aos="fade-left">
                         <div className="testimonial-image">
                             <img src="https://via.placeholder.com/150x150.png" alt="User Image" />
                         </div>
@@ -49,10 +49,10 @@ export function Home() {
                 </div>
             </div>
 
-            <div className="testimonials-section">
+            <div className="testimonials-section" data-aos="fade-up">
                 <h2>What Our Teachers Say</h2>
                 <div className="testimonials-container">
-                    <div className="testimonial-card">
+                    <div className="testimonial-card" data-aos="fade-right">
                         <div className="testimonial-image">
                             <img src="https://via.placeholder.com/150x150.png" alt="Testimonial 1" />
                         </div>
@@ -62,7 +62,7 @@ export function Home() {
                             <h4>Math Teacher</h4>
                         </div>
                     </div>
-                    <div className="testimonial-card">
+                    <div className="testimonial-card" data-aos="fade-up">
                         <div className="testimonial-image">
                             <img src="https://via.placeholder.com/150x150.png" alt="Testimonial 2" />
                         </div>
@@ -72,7 +72,7 @@ export function Home() {
                             <h4>English Teacher</h4>
                         </div>
                     </div>
-                    <div className="testimonial-card">
+                    <div className="testimonial-card" data-aos="fade-left">
                         <div className="testimonial-image">
                             <img src="https://via.placeholder.com/150x150.png" alt="Testimonial 3" />
                         </div>

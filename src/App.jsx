@@ -8,8 +8,8 @@ const App = () => {
   React.useEffect(() => {
     AOS.init({
       duration: 1000,
-      delay: 200,
-      once: true
+      delay: 100,
+      once: false
     });
   }, []);
   return (
