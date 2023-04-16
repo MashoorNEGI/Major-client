@@ -40,7 +40,10 @@ export function Home() {
                     <div className="testimonial-card" data-aos="fade-left">
                         <div className="testimonial-image">
                             <img src="https://via.placeholder.com/150x150.png" alt="User Image" />
-                        </div>
+                        </div><div class="notification">
+<p>Welcome back, Julio</p>
+<span class="notification_progress"></span>
+</div>
                         <div className="testimonial-content">
                             <p className="testimonial-text">"The best timetable maker out there! It's so easy to use and saves me so much time."</p>
                             <h3 className="testimonial-user">- Tom Wilson, Science Teacher</h3>

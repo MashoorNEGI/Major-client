@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { setLocalStorageItem } from 'src/utils/Localstorage';
 import ApiRequest from 'src/API/apirequest';
 import { Loggedin } from './Popup'
+import  Style from './css/Forms.module.css'
 export const Admin = () => {
     const [ showPopup, setShowPopup ] = useState(false);
     const [ account, setAccount ] = useState({
@@ -34,17 +35,17 @@ export const Admin = () => {
     };
     return (
         <>
-            <form className="register-form" method='POST' onSubmit={handleSubmit}>
+            <form className={Style.registerform} method='POST' onSubmit={handleSubmit}>
                 <h2>Login</h2>
-                <div className="form-group">
+                <div className={Style.formgroup}>
                     <label htmlFor="email">Email</label>
                     <input type="email" id="email" name="email" onChange={handleit} value={account.email} required />
                 </div>
-                <div className="form-group">
+                <div className={Style.formgroup}>
                     <label htmlFor="password">Password</label>
                     <input type="password" id="password" name="password" onChange={handleit} value={account.password} required />
                 </div>
-                <button type="submit" className='btn'>Login</button><br />
+                <button type="submit" className={Style.btn}>Login</button><br />
             </form>
             {showPopup && (
                 <Loggedin close={handleClose} />
@@ -88,17 +89,17 @@ export const Teacher = () => {
     }
     return (
         <>
-            <form className="register-form" method='POST' onSubmit={handleSubmit}>
+            <form className={Style.registerform} method='POST' onSubmit={handleSubmit}>
                 <h2>Login</h2>
-                <div className="form-group">
+                <div className={Style.formgroup}>
                     <label htmlFor="email">Email</label>
                     <input type="email" id="email" name="email" onChange={handleit} value={account.email} required />
                 </div>
-                <div className="form-group">
+                <div className={Style.formgroup}>
                     <label htmlFor="password">Password</label>
                     <input type="password" id="password" name="password" onChange={handleit} value={account.password} required />
                 </div>
-                <button type="submit" className='btn'>Login</button><br />
+                <button type="submit" className={Style.btn}>Login</button><br />
                 <p>Don't have account ?<a href="/register/teacher" className='signup'>Register</a></p>
             </form>
             {showPopup && (
@@ -110,14 +111,12 @@ export const Teacher = () => {
 }
 
 export const Student = () => {
-    const [ showPopup, setShowPopup ] = useState(false);
+    const [ visible, setVisible ] = useState(false);
+
     const [ account, setAccount ] = useState({
         enroll_no: '',
         password: '',
     });
-    const handleClose = () => {
-        window.location = `/view`
-    };
     let username, values
     const handleit = (e) => {
         username = e.target.name
@@ -131,30 +130,35 @@ export const Student = () => {
             const res = await ApiRequest('student/signin', 'POST', account, { authorization: false })
             if (res.auth) {
                 setLocalStorageItem('Data', res, new Date().getTime() + 3600 * 1000);
+                setVisible(true)
+                setTimeout(() => {
+                    setVisible(false);
+                    window.location.href = '/view';
+                }, 4000);
             }
-            setShowPopup(true);
+
         } catch (error) {
             console.log(error)
         }
     }
     return (
         <>
-            <form className="register-form" method='POST' onSubmit={handleSubmit}>
+            <form className={Style.registerform} method='POST' onSubmit={handleSubmit}>
                 <h2>Login</h2>
-                <div className="form-group">
+                <div className={Style.formgroup}>
                     <label htmlFor="enroll_no">Enroll No</label>
                     <input type="text" id="enroll_no" name="enroll_no" onChange={handleit} value={account.enroll_no} required />
                 </div>
-                <div className="form-group">
+                <div className={Style.formgroup}>
                     <label htmlFor="password">Password</label>
                     <input type="password" id="password" name="password" onChange={handleit} value={account.password} required />
                 </div>
                 <button type="submit" className='btn'>Login</button><br />
                 <p>Don't have account ?<a href="/register/student" className='signup'>Register</a></p>
             </form>
-            {showPopup && (
-                <Loggedin close={handleClose} />
-            )}
+            {visible &&
+                <Loggedin visible={visible} />
+            }
         </>
     )
 }

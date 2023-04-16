@@ -10,14 +10,16 @@
 
 :root {
     --body_background: #AD8B73;
-    --body_cards: #CEAB93;
+    --body_cards: #FFFBE9;
     --body_color: black;
+    --body_link: black;
 }
 
 [data-theme="dark"] {
     --body_background: #282c34;
     --body_color: white;
     --body_cards: #3d4349;
+    --body_link: white;
 }
 
 ::-webkit-scrollbar {
