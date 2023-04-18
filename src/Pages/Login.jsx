@@ -1,11 +1,11 @@
-import React from "react";
-import { Link, Outlet } from "react-router-dom";
-import { Student } from "src/components/Logins";
-import Card from 'src/components/shared/Cards'
+import React, { useState } from "react";
+import { Student, Teacher } from "src/components/Logins";
 const Login = () => {
+    const [ activeComponent, setActiveComponent ] = useState('student');
     return (
         <>
-        <Student/>
+            {activeComponent === 'student' && <Student setActiveComponent={setActiveComponent} />}
+            {activeComponent === 'teacher' && <Teacher setActiveComponent={setActiveComponent} />}
         </>
     );
 };

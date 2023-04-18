@@ -1,0 +1,111 @@
+.registerform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    margin: 70px auto;
+    padding: 40px;
+    background-color: var(--body_cards);
+    border-radius:10px ;
+    border: 0;
+    box-shadow: 0px 0px 5px 0px black;
+}
+.registerform a{
+    color: var(--body_link);
+}
+
+.registerform h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.formgroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.formgroup label {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.formgroup input[type="text"],
+.formgroup input[type="email"],
+.formgroup input[type="password"],
+.formgroup select {
+    font-size: 16px;
+    max-width: 100%; 
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+    outline: none;
+    color: dimgray;
+}
+
+
+.formgroup small {
+    margin-top: 5px;
+    font-size: 14px;
+    color: var(--body_color);
+}
+
+.label-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    background-color: #98d8ed;
+    border-radius: 10%;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.remove {
+    margin-left: 10px;
+    cursor: pointer;
+    color: #31708f;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 480px) {
+
+    .formgroup input[type="text"],
+    .formgroup input[type="email"],
+    .formgroup input[type="password"],
+    .formgroup select {
+        font-size: 14px;
+    }
+}
+
+.asbtn {
+    max-width: 320px;
+    display: flex;
+    padding: 0.5rem 1.4rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    align-items: center;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    gap: 0.75rem;
+    color:var(--body_color) !important;
+    background-color:var(--body_cards);
+    cursor: pointer;
+    box-shadow: 0px 0px 2px 0px black;
+    margin: 5px auto;
+    transition: all .6s ease;
+    box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+}
