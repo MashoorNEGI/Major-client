@@ -5,7 +5,6 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "./css/Swapper.css";
-// import required modules
 import { EffectCoverflow, Pagination } from "swiper";
 const Swapper = () => {
     return (

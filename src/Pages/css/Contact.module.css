@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
 
 .container {
-    max-width: 400px;
     width: 100%;
     margin: 0 auto;
     position: relative;
@@ -20,7 +19,7 @@
     border-radius: 5px;
     background: var(--body_cards);
     padding: 25px;
-    margin: 15px 0;
+    margin:50px auto;
     width: 50%;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }

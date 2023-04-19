@@ -21,8 +21,8 @@ const Schedule = () => {
               <p className={Style.description}>Search and favorite your timetable to get quick access anytime!</p>
               <button className={Style.button}>Logout</button>
             </section>
-            <div class={Style.container}>
-              <div class={Style.cards}>
+            <div className={Style.container}>
+              <div className={Style.cards}>
                 <Swapper />
               </div>
             </div>

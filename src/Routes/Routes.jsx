@@ -4,7 +4,7 @@ import Error404 from 'src/components/Error/Error404'
 import { Register1, Register2 } from 'src/components/Registers'
 import { Loader } from 'src/components/shared/Loader'
 import GoToTop from 'src/utils/GoTo';
-import { Search } from 'src/components/shared/Wrap'
+import { Search } from 'src/components/Wrap'
 import Schedule from 'src/Pages/Schedule'
 const Protected = lazy(() => import('src/components/Protected'));
 const Home = lazy(() => import('src/Pages/Home'));
