@@ -69,3 +69,13 @@
     width: 100%;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
+
+
+@media only screen and (max-width: 768px) {
+    [data-aos="fade-right"] {
+        transform: translateX(20px);
+    }
+    [data-aos="fade-left"] {
+        transform: translateX(20px);
+    }
+}
