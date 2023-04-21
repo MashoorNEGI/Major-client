@@ -1,11 +1,11 @@
 import React, { lazy, Suspense } from 'react'
 import { Routes as Switch, Route } from 'react-router-dom'
 import Error404 from 'src/components/Error/Error404'
-import { Register1, Register2 } from 'src/components/Registers'
 import { Loader } from 'src/components/shared/Loader'
 import GoToTop from 'src/utils/GoTo';
 import { Search } from 'src/components/Wrap'
 import Schedule from 'src/Pages/Schedule'
+import Register from 'src/Pages/Register'
 const Protected = lazy(() => import('src/components/Protected'));
 const Home = lazy(() => import('src/Pages/Home'));
 const About = lazy(() => import('src/Pages/About'));
@@ -22,8 +22,7 @@ const Routes = () => {
                 <Switch>
                     <Route path='/' element={<Home />}>
                         <Route index element={<Index />} />
-                        <Route path='Register/student' element={<Register2 />} />
-                        <Route path='Register/teacher' element={<Register1 />} />
+                        <Route path='register' element={<Register />} />
                         <Route path="login" element={<Login />} />
                         <Route path='view' element={<Protected Component={Schedule} />} >
                             <Route path=':name' element={<Timetable />} />

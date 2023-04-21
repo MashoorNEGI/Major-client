@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { setLocalStorageItem } from 'src/utils/Localstorage';
 import { Loggedin } from 'src/components/Popup';
-import ApiRequest from 'src/API/apirequest';
 import Style from 'src/components/css/Login.module.css'
-import { useFormik } from 'formik';
 import { MdAccountCircle } from 'react-icons/md';
 import FormInput from './Form/Forminput';
+import FormGroup from './Form/FormGroup';
+import useFormikValues from 'src/Hooks/useFormSubmit';
+import PasswordInput from './Form/PasswordInput';
 const studentvalues = {
     name: "",
     email: "",
@@ -16,100 +16,72 @@ const studentvalues = {
 const teachervalues = {
     name: "",
     email: "",
+    "Subject": "",
     password: "",
     classes: ""
 }
-export const Register1 = () => {
+export const Teacher = ({ setActiveComponent }) => {
     const [ visible, setVisible ] = useState(false);
-    const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
-        initialValues: teachervalues,
-        onSubmit: async (values) => {
-            try {
-                const res = await ApiRequest('users/register', 'POST', values, { authorization: false })
-                if (res.auth) {
-                    setLocalStorageItem('Data', res, new Date().getTime() + 3600 * 1000);
-                    setVisible(true)
-                    setTimeout(() => {
-                        setVisible(false);
-                        window.location.href = '/view';
-                    }, 4000);
-                }
-            } catch (error) {
-                console.log(error)
-                if (error.response.status === 400) {
-                    alert(error.response.data.error)
-                }
-            }
-        }
-    })
-    console.log("🚀 ~ file: Registers.jsx:46 ~ Register1 ~ values:", values)
+    const handleClick = () => {
+        setActiveComponent('student');
+    };
+    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(teachervalues, 'users/register', { authorization: false }, setVisible, '/view');
     return (
         <>
-            <form className={Style.registerform} method='POST' onSubmit={handleSubmit}>
+            <form className={Style.registerform} method='POST' onSubmit={handleSubmit} data-aos="fade-up">
                 <h2>Register</h2>
                 <FormInput label="Name" type="text" id="name" name="name" value={values.name} onChange={handleChange} onBlur={handleBlur} required />
                 <FormInput label="Email" type="email" id="email" name="email" value={values.email} onChange={handleChange} onBlur={handleBlur} required />
-                <FormInput label="Enroll Number" type="text" id="enroll_no" name="enroll_no" value={values.enroll_no} onChange={handleChange} onBlur={handleBlur} required />
-                <div className={Style.formgroup}>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onChange={handleChange} onBlur={handleBlur} value={values.password} required />
-                    <small>Password must contain at least one number, one lowercase and one uppercase letter, and be at least 8 characters long</small>
-                </div>
-                <div className={Style.formgroup}>
-                    <label htmlFor="classroom">Classroom</label>
-                    <input type="text" id="classroom" name="classes" onChange={handleChange} value={values.classes} required />
-                </div>
+                <FormInput label="Subject" type="text" id="Subject" name="Subject" value={values.Subject} onChange={handleChange} onBlur={handleBlur} required />
+                <PasswordInput
+                    containerClassName={Style.formgroup}
+                    handleChange={handleChange}
+                    handleBlur={handleBlur}
+                    values={values}
+                    register
+                />
+                <FormGroup label="Classroom" id="classroom" name="classroom" type="text" handleChange={handleChange} handleBlur={handleBlur} value={values.classes} required={true} autoComplete='off' />
                 <button type="submit" className='btn'>Register</button>
-            </form>
+                <hr className='hr' />
+                <a className={Style.asbtn} onClick={handleClick}>
+                    <MdAccountCircle />
+                    Register as Student
+                </a>
+            </form >
             {visible && (
                 <Loggedin visible={visible} />
-            )}
+            )
+            }
         </>
     )
 }
 
-export const Register2 = () => {
+export const Student = ({ setActiveComponent }) => {
     const [ visible, setVisible ] = useState(false);
-    const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
-        initialValues: studentvalues,
-        // validationSchema: teacherschema,
-        onSubmit: async (values) => {
-            try {
-                const res = await ApiRequest('student/register', 'POST', values, { authorization: false })
-                if (res.auth) {
-                    setLocalStorageItem('Data', res, new Date().getTime() + 3600 * 1000);
-                    setVisible(true)
-                    setTimeout(() => {
-                        setVisible(false);
-                        window.location.href = '/view';
-                    }, 4000);
-                }
-            } catch (error) {
-                console.log(error)
-                if (error.response.status === 400) {
-                    alert(error.response.data.error)
-                }
-            }
-        }
-    })
+    const handleClick = () => {
+        setActiveComponent('teacher');
+    };
+    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(studentvalues, 'student/register', { authorization: false }, setVisible, '/view');
     return (
         <>
-            <form className={Style.registerform} method='POST' onSubmit={handleSubmit}>
+            <form className={Style.registerform} method='POST' onSubmit={handleSubmit} data-aos="fade-up">
                 <h2>Register</h2>
                 <FormInput label="Name" type="text" id="name" name="name" value={values.name} onChange={handleChange} onBlur={handleBlur} required />
                 <FormInput label="Email" type="email" id="email" name="email" value={values.email} onChange={handleChange} onBlur={handleBlur} required />
                 <FormInput label="Enroll Number" type="text" id="enroll_no" name="enroll_no" value={values.enroll_no} onChange={handleChange} onBlur={handleBlur} required />
-                <div className={Style.formgroup}>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onChange={handleChange} onBlur={handleBlur} value={values.password} required />
-                    <small>Password must contain at least one number, one lowercase and one uppercase letter, and be at least 8 characters long</small>
-                </div>
+                <PasswordInput
+                    containerClassName={Style.formgroup}
+                    handleChange={handleChange}
+                    handleBlur={handleBlur}
+                    values={values}
+                    register
+                />
                 <FormInput label="Classroom" type="text" id="classes" name="classes" value={values.classes} onChange={handleChange} onBlur={handleBlur} required />
                 <button type="submit" className='btn'>Register</button>
                 <hr className='hr' />
-                <a className={Style.asbtn}>
+                <a className={Style.asbtn} onClick={handleClick}>
                     <MdAccountCircle />
-                    Teacher registration
+                    Register as Teacher
                 </a>
             </form>
             {visible &&
