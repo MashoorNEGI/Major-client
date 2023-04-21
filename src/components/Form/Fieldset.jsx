@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormInput = ({ type, name, placeholder, required }) => {
+const FormInput = ({ type, name, placeholder, required, value, disabled }) => {
     return (
         <fieldset>
             {type === 'textarea' ? (
@@ -13,6 +13,8 @@ const FormInput = ({ type, name, placeholder, required }) => {
             ) : (
                 <input
                     type={type}
+                    value={value}
+                    disabled={disabled}
                     placeholder={placeholder}
                     name={name}
                     tabIndex="1"
