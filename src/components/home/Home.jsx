@@ -12,7 +12,7 @@ export function Home() {
                         data-aos-delay="500">
                         <h1>Make Timetables for Teachers with Ease</h1>
                         <p>Create and manage teacher timetables easily with our web app. Say goodbye to the hassle of manually scheduling classes and meetings.</p>
-                        <a href="/" className="btn">Get Started</a>
+                        <a href="/login" className="btn">Get Started</a>
                     </div>
                 </div>
             </section>

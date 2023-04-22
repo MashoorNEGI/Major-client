@@ -5,7 +5,7 @@ import { Loader } from 'src/components/shared/Loader'
 import GoToTop from 'src/utils/GoTo';
 import { Search } from 'src/components/Wrap'
 import Schedule from 'src/Pages/Schedule'
-import Register from 'src/Pages/Register'
+const Register = lazy(() => import('src/Pages/Register'))
 const Protected = lazy(() => import('src/components/Protected'));
 const Home = lazy(() => import('src/Pages/Home'));
 const About = lazy(() => import('src/Pages/About'));
