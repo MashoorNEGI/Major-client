@@ -49,9 +49,6 @@ const useFormikValues = (initialValues, url, options = { authorization: false },
                     }
                 }
             } catch (error) {
-                console.log(error)
-                console.log(error.includes(401))
-                // showToast('Error occurred', 'error');
             }
         },
     });

@@ -6,6 +6,7 @@ import FormInput from './Form/Forminput';
 import FormGroup from './Form/FormGroup';
 import useFormikValues from 'src/Hooks/useFormSubmit';
 import PasswordInput from './Form/PasswordInput';
+import { ToastContainer } from 'react-toastify';
 const studentvalues = {
     name: "",
     email: "",
@@ -21,7 +22,6 @@ const teachervalues = {
     classes: ""
 }
 export const Teacher = ({ setActiveComponent }) => {
-    const [ visible, setVisible ] = useState(false);
     const handleClick = () => {
         setActiveComponent('student');
     };
@@ -47,17 +47,13 @@ export const Teacher = ({ setActiveComponent }) => {
                     <MdAccountCircle />
                     Register as Student
                 </a>
-            </form >
-            {visible && (
-                <Loggedin visible={visible} />
-            )
-            }
+            </form>
+            <ToastContainer id="login" position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClickrtl={false} pauseOnFocusLoss draggable pauseOnHovert heme="light" />
         </>
     )
 }
 
 export const Student = ({ setActiveComponent }) => {
-    const [ visible, setVisible ] = useState(false);
     const handleClick = () => {
         setActiveComponent('teacher');
     };
@@ -84,9 +80,7 @@ export const Student = ({ setActiveComponent }) => {
                     Register as Teacher
                 </a>
             </form>
-            {visible &&
-                <Loggedin visible={visible} />
-            }
+            <ToastContainer id="login" position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClickrtl={false} pauseOnFocusLoss draggable pauseOnHovert heme="light" />
         </>
     )
 }
