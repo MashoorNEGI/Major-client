@@ -28,7 +28,7 @@ const Routes = () => {
                             <Route path=':name' element={<Timetable />} />
                             <Route path='search' element={<Search />} />
                         </Route>
-                        <Route path='controls' element={<Protected Component={Control} />} />
+                        <Route path='controls' element={<Control />} />
                         <Route path='About' element={<About />} />
                         <Route path='contact' element={<Contact />} />
                     </Route>

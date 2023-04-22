@@ -1,7 +1,38 @@
 import { useFormik } from 'formik';
 import ApiRequest from 'src/API/apirequest';
 import { setLocalStorageItem } from 'src/utils/Localstorage';
-const useFormikValues = (initialValues, url, options = { authorization: false }, setvisible, redirectUrl) => {
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const showToast = (message, type, redirect) => {
+    const toastOptions = {
+        position: "bottom-right",
+        containerId: 'login',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    };
+
+    switch (type) {
+        case 'success':
+            toast.success(message, { ...toastOptions, onClose: () => { window.location.href = redirect } });
+            break;
+        case 'error':
+            toast.error(message, toastOptions);
+            break;
+        case 'warning':
+            toast.warn(message, toastOptions);
+            break;
+        default:
+            break;
+    }
+}
+
+const useFormikValues = (initialValues, url, options = { authorization: false }, redirect) => {
     const { values, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues,
         onSubmit: async (values) => {
@@ -14,15 +45,13 @@ const useFormikValues = (initialValues, url, options = { authorization: false },
                     const res = await ApiRequest(url, 'POST', values, options);
                     if (res.auth) {
                         setLocalStorageItem('Data', res, new Date().getTime() + 3600 * 1000);
-                        setvisible(true);
-                        setTimeout(() => {
-                            setvisible(false);
-                            window.location.href = redirectUrl;
-                        }, 4000);
+                        showToast('You are Logged In', 'success', redirect);
                     }
                 }
             } catch (error) {
-                console.log(error);
+                console.log(error)
+                console.log(error.includes(401))
+                // showToast('Error occurred', 'error');
             }
         },
     });
