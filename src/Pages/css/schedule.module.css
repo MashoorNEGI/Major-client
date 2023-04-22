@@ -39,7 +39,7 @@
     font-size: 1rem;
     padding: 5px 10px;
     cursor: pointer;
-    color: #fff;
+    color:var(--body_color);
 }
 
 .logo {
@@ -66,8 +66,7 @@
 }
 
 .navlink:hover {
-    background-color: #FFFBE9;
-    color: #4e4e4e;
+    background-color:rgba(0, 0, 0, 0.639)    ;
 }
 
 .navwidth {

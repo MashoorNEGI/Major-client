@@ -8,7 +8,6 @@ import {
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom'
 import Style from 'src/Pages/css/schedule.module.css'
-import { getLocalStorageItem } from './Localstorage'
 import { BiSearchAlt } from 'react-icons/bi'
 import { MdFavoriteBorder, MdMenu, MdOutlineLogout } from 'react-icons/md'
 export function Slidebar({
@@ -62,10 +61,10 @@ export function Slidebar({
         </Link>
       </div>
     </nav >
-        {
-          showPopup && (
-            <Loggedout />
-          )
+    {
+      showPopup && (
+        <Loggedout />
+      )
     }
   </>;
 }
