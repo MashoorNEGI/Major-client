@@ -56,7 +56,7 @@ export const Student = ({ setActiveComponent }) => {
                 values={values}
             />
             <button type="submit" className='btn'>Login</button><br />
-            <p>Don't have account ?<a href="/register/student" className='signup'>Register</a></p>
+            <p>Don't have account ?<a href="/register" className='signup'>Register</a></p>
             <hr className='hr' />
             <a className={Style.asbtn} onClick={handleClick}>
                 <MdAccountCircle />
