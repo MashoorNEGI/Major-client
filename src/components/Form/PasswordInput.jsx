@@ -14,7 +14,7 @@ function PasswordInput(props) {
                 id="Password"
                 type={showPassword ? 'text' : 'password'}
                 name="password"
-                pattern={props.register ? "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" : null}
+                pattern={props.register ? `^(?=.*)(?=.*[a-z])(?=.*[A-Z]).{8,}$` : null}
                 onChange={props.handleChange}
                 onBlur={props.handleBlur}
                 value={props.values.password}

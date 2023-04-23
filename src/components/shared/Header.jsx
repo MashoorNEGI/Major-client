@@ -69,14 +69,12 @@ const Header =({ data }) => {
                         localStorage.removeItem("Data");
                         window.location = '/'
                     }} />
-                    <Theme />
                 </>
             ) : (
                 <>
                     <a href="/login" className="acc-btn" style={{ left: "20px" }}>
                         Login
                     </a>
-                    <Theme />
                 </>
             )}
         </nav>

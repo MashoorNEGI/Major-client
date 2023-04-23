@@ -3,6 +3,7 @@ import ApiRequest from 'src/API/apirequest';
 import { setLocalStorageItem } from 'src/utils/Localstorage';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Cookies from 'js-cookie';
 
 const showToast = (message, type, redirect) => {
     const toastOptions = {
@@ -14,7 +15,7 @@ const showToast = (message, type, redirect) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
+        theme: Cookies.get('theme') || "light",
     };
 
     switch (type) {

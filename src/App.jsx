@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Routes from './Routes/Routes';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import ThemeProvider from './utils/ThemeProvider';
 const App = () => {
   React.useEffect(() => {
     AOS.init({
@@ -16,7 +17,9 @@ const App = () => {
     <>
       <BrowserRouter>
         <div className='App'>
+          <ThemeProvider>
           <Routes />
+          </ThemeProvider>
         </div>
       </BrowserRouter>
     </>

@@ -3,13 +3,12 @@ import { Loggedout } from 'src/components/Popup'
 import {
   FaAngleRight,
   FaAngleLeft,
-  FaShoppingCart,
   FaBars
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom'
 import Style from 'src/Pages/css/schedule.module.css'
 import { BiSearchAlt } from 'react-icons/bi'
-import { MdFavoriteBorder, MdMenu, MdOutlineLogout } from 'react-icons/md'
+import { MdFavoriteBorder, MdOutlineSettings, MdMenu, MdOutlineLogout } from 'react-icons/md'
 export function Slidebar({
   show,
   visible,
@@ -43,9 +42,9 @@ export function Slidebar({
             <BiSearchAlt size={ICON_SIZE} />
             <span>Search</span>
           </Link>
-          <Link to="/orders" className={Style.navlink}>
-            <FaShoppingCart size={ICON_SIZE} />
-            <span>Orders</span>
+          <Link to="/view/setting" className={Style.navlink}>
+            <MdOutlineSettings size={ICON_SIZE} />
+            <span>Settings</span>
           </Link>
         </div>
       </div>

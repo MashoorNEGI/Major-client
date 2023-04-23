@@ -3,9 +3,6 @@
 }
 
 .switch {
-    left: 118px;
-    top: 7px;
-    position: absolute;
     overflow: hidden;
 
 }
@@ -57,4 +54,12 @@
 
 .checkbox:active~.slider::before {
     transform: translate(0);
+}
+
+@media screen and (max-width: 768px) {
+    .slider{
+        position: relative;
+        left: 200px;
+        margin-top:20px ;
+    }
 }

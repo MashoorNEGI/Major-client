@@ -63,11 +63,14 @@ const ApiRequest = async (url, method, data, options = { authorization: true }) 
 
         return response.data;
     } catch (error) {
-        console.log(error.response.status)
-        if (error.response.status === 401)
-            showToast('Invalid Credentials', 'error');
-        if (error.response.status === 500)
-            showToast('somthing went wrong', 'warning');
+        console.log(error)
+        if (error.message === 'Network Error') {
+            showToast(error.message, 'error');
+        } else if (error.response.status === 401) {
+            showToast(error.response.data.message, 'error');
+        } else if (error.response.status === 500) {
+            showToast(error.response.data.message, 'warning');
+        }
     }
 };
 
