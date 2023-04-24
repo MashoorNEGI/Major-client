@@ -25,6 +25,7 @@
 .eye {
     position: absolute;
     right: 10px;
+    color: var(--body_background);
     top: 42px;
     font-size: 18px;
 }

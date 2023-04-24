@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react'
 import { Routes as Switch, Route } from 'react-router-dom'
 import Error404 from 'src/components/Error/Error404'
 import { Loader } from 'src/components/shared/Loader'
-import GoToTop from 'src/utils/GoTo';
+import GoToTop from 'src/components/shared/GoTo';
 import { Search } from 'src/components/Search'
 import Schedule from 'src/Pages/Schedule'
 import Setting from 'src/components/Setting';

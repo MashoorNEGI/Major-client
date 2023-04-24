@@ -1,6 +1,7 @@
 import React from 'react';
 import Style from './css/Table.module.css';
-
+import { triggerNotification } from 'src/utils/Notification';
+import { getLocalStorageItem } from 'src/utils/Localstorage';
 const Time = ({ timetable }) => {
     const days = timetable.days;
     const now = new Date();
@@ -21,6 +22,15 @@ const Time = ({ timetable }) => {
         if (slot) {
         }
         const isActive = currentTime > slot.start_time && currentTime <= slot.end_time && currentday === day.day
+        // const isActive = true && currentday === day.day
+        if ( getLocalStorageItem('Notification') === 'granted' && isActive) {
+            const title = `Class: ${slot.class}`;
+            const options = {
+                body: `Subject: ${slot.subject}`,
+                icon: 'public/vite.svg', // set the path to your app's icon
+            };
+            triggerNotification(title, options);
+        }
         return (
             <div className={`${Style.periodWrapper} ${isActive ? Style.active : ''}`} >
                 <div className={Style.class}>{slot.class}</div>

@@ -1,6 +1,7 @@
   import React from 'react'
   import Style from './css/setting.module.css'
   import Theme from 'src/utils/Theme'
+import { NotificationToggler } from 'src/utils/Notification'
   const Setting = () => {
     return (
       <div class={Style.Setting}>
@@ -10,7 +11,7 @@
         </div>
         <div class={Style.box}>
           <h1>Heading 2</h1>
-          <p>Some text here</p>
+          <NotificationToggler/>
         </div>
         <div class={Style.box}>
           <h1>Heading 3</h1>

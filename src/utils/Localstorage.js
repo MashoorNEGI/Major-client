@@ -1,4 +1,4 @@
-export const setLocalStorageItem = (key, value, expiration) => {
+export const setLocalStorageItem = (key, value, expiration = Number.MAX_SAFE_INTEGER) => {
     const item = { value, expiration };
     localStorage.setItem(key, JSON.stringify(item));
 };
