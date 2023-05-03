@@ -1,13 +1,14 @@
 import { Slidebar } from 'src/utils/Slidebar';
-import React from 'react'
+import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { getLocalStorageItem } from 'src/utils/Localstorage'
 import Style from './css/schedule.module.css'
 import Swapper from 'src/components/Swapper';
+import withAuth from 'src/Hooks/Auth';
 const ICON_SIZE = 20;
 
 const Schedule = () => {
-  const [ navVisible, showNavbar ] = React.useState('');
+  const [ navVisible, showNavbar ] = useState('');
   const Data = getLocalStorageItem('Data')
   const ID = Data.class ? Data.class : Data.auth.split(".")[ 2 ]
   return (
@@ -34,4 +35,5 @@ const Schedule = () => {
   )
 }
 
-export default Schedule
+// export default Schedule
+export default withAuth(Schedule) 

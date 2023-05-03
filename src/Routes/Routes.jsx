@@ -31,7 +31,7 @@ const Routes = () => {
                                 ? <Navigate replace to="/view" />
                                 : <Login />
                         )} />
-                        <Route path='view' element={<Protected Component={Schedule} />} >
+                        <Route path='view' element={<Schedule />} >
                             <Route path=':name' element={<Timetable />} />
                             <Route path='search' element={<Search />} />
                             <Route path='Setting' element={<Setting />} />
@@ -42,7 +42,7 @@ const Routes = () => {
                     </Route>
                     <Route path="*" element={<Error404 />} />
                 </Switch>
-            </Suspense>
+            </Suspense >
         </>
     )
 }

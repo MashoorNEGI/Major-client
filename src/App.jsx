@@ -1,5 +1,7 @@
 import React from 'react'
 import './App.css'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './Routes/Routes';
 import AOS from 'aos';
@@ -18,8 +20,20 @@ const App = () => {
       <BrowserRouter>
         <div className='App'>
           <ThemeProvider>
-          <Routes />
+            <Routes />
           </ThemeProvider>
+          <ToastContainer
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </div>
       </BrowserRouter>
     </>
