@@ -1,17 +1,18 @@
+import { TimetableBody } from 'src/components/TimetableBody';
 import React, { useState } from 'react';
 import Style from './css/Create.module.css'
+import { getInitialTimetableData, updateTimetableData } from 'src/Func/TimeTable'
+import ApiRequest from 'src/API/apirequest';
+import { TimetableHeader } from 'src/components/TimetableHeader';
 function TimeTable() {
     // Define the days for the timetable
     const days = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
-    const Class = 'BBA'
+    const [ Classes, setClasses ] = useState('');
     // Define the initial state for the timetable data
     const [ periodsCount, setPeriodsCount ] = useState(5);
-    const [ timetableData, setTimetableData ] = useState(
-        days.map(() => Array.from({ length: periodsCount }, () => ({ subject: "", start: "", end: "" })))
-    );
+    const [ timetableData, setTimetableData ] = useState(getInitialTimetableData(days, periodsCount));
     const data = {
-        email: `Email`,
-        class: Class,
+        className: Classes,
         days: [
             { day: days[ 0 ], periods: timetableData[ 0 ] },
             { day: days[ 1 ], periods: timetableData[ 1 ] },
@@ -21,51 +22,27 @@ function TimeTable() {
             { day: days[ 5 ], periods: timetableData[ 5 ] },
         ]
     }
-    console.log()
+    console.log(data)
     // Handle changes to the periods count
     const handlePeriodsCountChange = (event) => {
         const newCount = parseInt(event.target.value, 10) || 0;
         setPeriodsCount(newCount);
-        setTimetableData(
-            days.map(() => Array.from({ length: newCount }, () => ({ subject: "", start: "", end: "" })))
-        );
+        setTimetableData(getInitialTimetableData(days, newCount));
     };
 
     // Handle changes to the timetable data
     const handleTimetableChange = (row, col, field, value) => {
-        setTimetableData((prevData) => {
-            const newData = [ ...prevData ];
-            newData[ row ][ col ][ field ] = value;
-            console.log(data)
-            return newData;
-        });
+        setTimetableData(prevData =>
+            updateTimetableData(prevData, row, col, field, value)
+        );
     };
+    const handleSubmit = () => {
+        const res = ApiRequest('create', 'POST', data, { authorization: false })
+        console.log(res)
+    }
     return (
         <>
-            <div className={Style.container}>
-                <div className={Style.inputcontainer}>
-                    <div className={Style.inputwrapper}>
-                        <label htmlFor="leftInput" className={Style.inputlabel}>No. of periods:</label>
-                        <input
-                            type="text"
-                            id="leftInput"
-                            className={Style.inputfield}
-                            onChange={handlePeriodsCountChange}
-                            value={periodsCount}
-                        />
-                    </div>
-                    <div className={Style.inputwrapper}>
-                        <label htmlFor="rightInput" className={Style.inputlabel}>Class Room:</label>
-                        <input
-                            type="text"
-                            id="rightInput"
-                            className={Style.inputfield}
-                            value={Class}
-                            disabled
-                        />
-                    </div>
-                </div>
-            </div>
+            <TimetableHeader handlePeriodsCountChange={handlePeriodsCountChange} periodsCount={periodsCount} Classes={Classes} setClasses={setClasses} />
 
             <div className={Style.timetable}>
                 <table>
@@ -77,36 +54,10 @@ function TimeTable() {
                             ))}
                         </tr>
                     </thead>
-                    <tbody>
-                        {days.map((day, rowIndex) => (
-                            <tr key={rowIndex}>
-                                <td>{day}</td>
-                                {Array.from({ length: periodsCount }, (_, i) => i).map((colIndex) => (
-                                    <td key={colIndex}>
-                                        <div className={Style.cell}>
-                                        <input
-                                            type="text"
-                                            value={timetableData[ rowIndex ][ colIndex ].subject}
-                                            onChange={(event) => handleTimetableChange(rowIndex, colIndex, "subject", event.target.value)}
-                                        />
-                                        <input
-                                            type="time"
-                                            value={timetableData[ rowIndex ][ colIndex ].start}
-                                            onChange={(event) => handleTimetableChange(rowIndex, colIndex, "start", event.target.value)}
-                                        />
-                                        <input
-                                            type="time"
-                                            value={timetableData[ rowIndex ][ colIndex ].end}
-                                            onChange={(event) => handleTimetableChange(rowIndex, colIndex, "end", event.target.value)}
-                                            />
-                                            </div>
-                                    </td>
-                                ))}
-                            </tr>
-                        ))}
-                    </tbody>
+                    <TimetableBody days={days} periodsCount={periodsCount} timetableData={timetableData} handleTimetableChange={handleTimetableChange} />
                 </table>
             </div>
+            <button className='btn' onClick={handleSubmit}>submit</button>
         </>
     );
 }

@@ -10,7 +10,7 @@ import { NotificationToggler } from 'src/utils/Notification'
           <Theme />
         </div>
         <div class={Style.box}>
-          <h1>Heading 2</h1>
+          <h1>Notification</h1>
           <NotificationToggler/>
         </div>
         <div class={Style.box}>
