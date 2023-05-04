@@ -1,9 +1,9 @@
-import { TimetableBody } from 'src/components/TimetableBody';
+import { TimetableBody } from 'src/components/TBody';
 import React, { useState } from 'react';
 import Style from './css/Create.module.css'
 import { getInitialTimetableData, updateTimetableData } from 'src/Func/TimeTable'
 import ApiRequest from 'src/API/apirequest';
-import { TimetableHeader } from 'src/components/TimetableHeader';
+import { TimetableHeader } from 'src/components/THeader';
 function TimeTable() {
     // Define the days for the timetable
     const days = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];

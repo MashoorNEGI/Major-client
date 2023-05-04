@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { Loggedin } from 'src/components/Popup';
+import React from 'react'
 import Style from 'src/components/css/Login.module.css'
 import { MdAccountCircle } from 'react-icons/md';
 import FormInput from './Form/Forminput';
@@ -25,7 +24,7 @@ export const Teacher = ({ setActiveComponent }) => {
     const handleClick = () => {
         setActiveComponent('student');
     };
-    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(teachervalues, 'users/register', { authorization: false },  '/view');
+    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(teachervalues, 'users/register', { authorization: false }, '/view');
     return (
         <>
             <form className={Style.registerform} method='POST' onSubmit={handleSubmit} data-aos="fade-up">
