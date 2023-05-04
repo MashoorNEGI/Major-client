@@ -1,11 +1,12 @@
-import { ToastContainer, toast } from 'react-toastify';
-import Style from './Theme.module.css'
+import { toast } from 'react-toastify';
+import Style from 'src/Theme/Theme.module.css'
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'js-cookie';
 import { getLocalStorageItem, setLocalStorageItem } from './Localstorage';
 import { useEffect } from 'react';
+
 const showToast = (message, type) => {
-    const toastOptions = {
+    const options = {
         position: "bottom-right",
         containerId: 'Notification',
         autoClose: 2000,
@@ -19,18 +20,19 @@ const showToast = (message, type) => {
 
     switch (type) {
         case 'success':
-            toast.success(message, { ...toastOptions });
+            toast.success(message, options);
             break;
         case 'error':
-            toast.error(message, toastOptions);
+            toast.error(message, options);
             break;
         case 'warning':
-            toast.warn(message, toastOptions);
+            toast.warn(message, options);
             break;
         default:
             break;
     }
 }
+
 const showNotification = (title, options) => {
     if ('Notification' in window) {
         new Notification(title, options);
@@ -41,9 +43,8 @@ export const triggerNotification = (title, options) => {
     showNotification(title, options);
 };
 
-
 export const NotificationToggler = () => {
-    const handleToggle = (e) => {
+    const toggleNotification = (e) => {
         const enabled = e.target.checked;
         if (enabled) {
             Notification.requestPermission().then(permission => {
@@ -64,19 +65,14 @@ export const NotificationToggler = () => {
     };
     useEffect(() => {
         const Notification = getLocalStorageItem('Notification');
-        if (Notification === 'granted') {
-            document.querySelector('.toggle-notify').checked = true;
-        } else {
-            document.querySelector('.toggle-notify').checked = false;
-        }
+        document.querySelector('.toggle-notify').checked = Notification === 'granted';
     }, [])
     return (
         <>
             <label className={Style.switch}>
-                <input type="checkbox" className={Style.checkbox + ' toggle-switch' + ' toggle-notify'} onChange={handleToggle} />
+                <input type="checkbox" className={`${Style.checkbox} toggle-switch toggle-notify`} onChange={toggleNotification} />
                 <div className={Style.slider}></div>
             </label>
-            <ToastContainer id="Notification" />
         </>
     )
 }

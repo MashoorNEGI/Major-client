@@ -4,7 +4,6 @@ import { MdAccountCircle } from 'react-icons/md'
 import useFormikValues from 'src/Hooks/useFormSubmit';
 import FormGroup from './Form/FormGroup';
 import PasswordInput from './Form/PasswordInput';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 const studentvalues = {
     enroll_no: "",
@@ -34,8 +33,6 @@ export const Teacher = ({ setActiveComponent }) => {
                     Signin as Student
                 </a>
             </form>
-            <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClickrtl={false} pauseOnFocusLoss draggable pauseOnHovert heme="light"
-            />
         </>
     )
 }
@@ -63,6 +60,5 @@ export const Student = ({ setActiveComponent }) => {
                 Signin as Teacher
             </a>
         </form>
-        <ToastContainer id="login" position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClickrtl={false} pauseOnFocusLoss draggable pauseOnHovert heme="light" />
     </>
 }

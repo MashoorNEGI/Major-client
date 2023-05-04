@@ -1,4 +1,4 @@
-import { Slidebar } from 'src/utils/Slidebar';
+import Slidebar from 'src/utils/Slidebar';
 import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { getLocalStorageItem } from 'src/utils/Localstorage'

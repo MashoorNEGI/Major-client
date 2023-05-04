@@ -8,7 +8,6 @@ import Cookies from 'js-cookie';
 const showToast = (message, type, redirect) => {
     const toastOptions = {
         position: "bottom-right",
-        containerId: 'login',
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,

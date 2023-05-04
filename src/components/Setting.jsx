@@ -1,6 +1,6 @@
   import React from 'react'
   import Style from './css/setting.module.css'
-  import Theme from 'src/utils/Theme'
+  import Theme from 'src/Theme/Theme'
 import { NotificationToggler } from 'src/utils/Notification'
   const Setting = () => {
     return (
