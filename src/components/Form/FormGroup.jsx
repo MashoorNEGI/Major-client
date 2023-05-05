@@ -1,4 +1,4 @@
-import Style from 'src/components/css/Login.module.css'
+import Style from 'src/components/services/css/Login.module.css'
 const FormGroup = ({ label, id, name, type, handleChange, handleBlur, value, required, autoComplete, placeholder }) => {
     return (
         <div className={Style.formgroup}>

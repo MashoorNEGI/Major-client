@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Style from './css/Wrap.module.css'
-import { APIloader } from './shared/Loader'
+import { APIloader } from 'src/components/shared/Loader'
 import ApiRequest from 'src/API/apirequest';
 export const Search = () => {
   const hasFetchedData = useRef(false)

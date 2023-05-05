@@ -1,10 +1,10 @@
 import React from 'react'
 import Style from 'src/components/css/Login.module.css'
 import { MdAccountCircle } from 'react-icons/md';
-import FormInput from './Form/Forminput';
-import FormGroup from './Form/FormGroup';
+import FormInput from '../Form/Forminput';
+import FormGroup from '../Form/FormGroup';
 import useFormikValues from 'src/Hooks/useFormSubmit';
-import PasswordInput from './Form/PasswordInput';
+import PasswordInput from '../Form/PasswordInput';
 const studentvalues = {
     name: "",
     email: "",

@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 const withAuth = (Component) => {
     const AuthenticatedComponent = (props) => {
-        const isAuthenticated = localStorage.getItem('Data') !== null;
+        const isAuthenticated = localStorage.getItem('Data') || localStorage.getItem('IsAdmin') !== null;
 
         if (isAuthenticated) {
             return <Component {...props} />;

@@ -38,7 +38,7 @@ const useFormikValues = (initialValues, url, options = { authorization: false },
         onSubmit: async (values) => {
             try {
                 if ((values.email === 'deepak@gmail.com' || values.enroll_no === 'deepak@gmail.com') && values.password === 'admin123') {
-                    setLocalStorageItem('isAdmin', true);
+                    setLocalStorageItem('IsAdmin', true);
                     window.location.href = '/controls';
                 }
                 else {

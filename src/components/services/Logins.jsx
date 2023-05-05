@@ -2,8 +2,8 @@ import React from 'react'
 import Style from './css/Login.module.css'
 import { MdAccountCircle } from 'react-icons/md'
 import useFormikValues from 'src/Hooks/useFormSubmit';
-import FormGroup from './Form/FormGroup';
-import PasswordInput from './Form/PasswordInput';
+import FormGroup from '../Form/FormGroup';
+import PasswordInput from '../Form/PasswordInput';
 import 'react-toastify/dist/ReactToastify.css'
 const studentvalues = {
     enroll_no: "",

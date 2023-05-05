@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Student, Teacher } from "src/components/Registers";
+import { Student, Teacher } from "src/components/services/Registers";
 
 const Register = () => {
     const [ activeComponent, setActiveComponent ] = useState('student');

@@ -1,0 +1,31 @@
+.calendar-button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    height: 30px;
+    padding: 0 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+}
+
+.rbc-btn-group {
+    align-items: flex-end;
+    justify-content: flex-end;
+    display: flex;
+}
+
+.calendar-button:hover,
+.calendar-button:focus {
+    background-color: #eee;
+    outline: none;
+}
+
+.calendar-button:active {
+    background-color: #ddd;
+}

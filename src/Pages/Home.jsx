@@ -5,7 +5,7 @@ import { getLocalStorageItem } from 'src/utils/Localstorage';
 import { Outlet } from 'react-router-dom';
 
 const Home = () => {
-const data = getLocalStorageItem('Data')
+const data = getLocalStorageItem('Data') || getLocalStorageItem('IsAdmin')
     return (
         <>
             <Header data={data} />
