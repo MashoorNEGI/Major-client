@@ -20,17 +20,17 @@ const Create = () => {
         setInput1(event.target.value);
     };
     const handleSubmit = (event) => {
-        console.log(data)
-        const res = ApiRequest('create', 'POST', data, { authorization: false })
+        ApiRequest('create', 'POST', data, { authorization: false })
     };
     return (
         <div style={{ width: "90%", margin: "auto" }}>
             <div className={styles.inputcontainer}>
-                <label htmlFor="input1" className={styles.Adminlabel}>Input 1:</label>
+                <label htmlFor="classname" className={styles.Adminlabel}>Class Name</label>
                 <input className={styles.Admininput}
                     type="text"
-                    id="input1"
+                    id="className"
                     value={input1}
+                    placeholder="Enter className"
                     onChange={handleInput1Change}
                 />
             </div>

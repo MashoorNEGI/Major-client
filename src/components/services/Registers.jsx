@@ -6,18 +6,10 @@ import FormGroup from '../Form/FormGroup';
 import useFormikValues from 'src/Hooks/useFormSubmit';
 import PasswordInput from '../Form/PasswordInput';
 const studentvalues = {
-    name: "",
-    email: "",
-    enroll_no: "",
-    password: "",
-    classes: ""
+    name: "", email: "", enroll_no: "", password: "", classes: ""
 }
 const teachervalues = {
-    name: "",
-    email: "",
-    "Subject": "",
-    password: "",
-    classes: ""
+    name: "", email: "", "Subject": "", password: "", classes: ""
 }
 export const Teacher = ({ setActiveComponent }) => {
     const handleClick = () => {
@@ -31,12 +23,7 @@ export const Teacher = ({ setActiveComponent }) => {
                 <FormInput label="Name" type="text" id="name" name="name" value={values.name} onChange={handleChange} onBlur={handleBlur} required />
                 <FormInput label="Email" type="email" id="email" name="email" value={values.email} onChange={handleChange} onBlur={handleBlur} required />
                 <FormInput label="Subject" type="text" id="Subject" name="Subject" value={values.Subject} onChange={handleChange} onBlur={handleBlur} required />
-                <PasswordInput
-                    containerClassName={Style.formgroup}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                    values={values}
-                    register
+                <PasswordInput containerClassName={Style.formgroup} handleChange={handleChange} handleBlur={handleBlur} values={values} register
                 />
                 <FormGroup label="Classroom" id="classroom" name="classroom" type="text" handleChange={handleChange} handleBlur={handleBlur} value={values.classes} required={true} autoComplete='off' />
                 <button type="submit" className='btn'>Register</button>
@@ -62,12 +49,7 @@ export const Student = ({ setActiveComponent }) => {
                 <FormInput label="Name" type="text" id="name" name="name" value={values.name} onChange={handleChange} onBlur={handleBlur} required />
                 <FormInput label="Email" type="email" id="email" name="email" value={values.email} onChange={handleChange} onBlur={handleBlur} required />
                 <FormInput label="Enroll Number" type="text" id="enroll_no" name="enroll_no" value={values.enroll_no} onChange={handleChange} onBlur={handleBlur} required />
-                <PasswordInput
-                    containerClassName={Style.formgroup}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                    values={values}
-                    register
+                <PasswordInput containerClassName={Style.formgroup} handleChange={handleChange} handleBlur={handleBlur} values={values} register
                 />
                 <FormInput label="Classroom" type="text" id="classes" name="classes" value={values.classes} onChange={handleChange} onBlur={handleBlur} required />
                 <button type="submit" className='btn'>Register</button>

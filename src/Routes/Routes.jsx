@@ -10,7 +10,8 @@ import { getLocalStorageItem } from 'src/utils/Localstorage';
 import Controls from 'src/Admin/Index';
 import Create from 'src/Admin/Create'
 import Record from 'src/Admin/Record';
-const Register = lazy(() => import('src/Pages/Register'))
+// const Registers = lazy(() => import('src/Pages/Registers'))
+import Registers from 'src/Pages/Register';
 const Home = lazy(() => import('src/Pages/Home'));
 const About = lazy(() => import('src/Pages/About'));
 const Timetable = lazy(() => import('src/Pages/TimeTable'));
@@ -26,7 +27,7 @@ const Routes = () => {
                 <Switch>
                     <Route path='/' element={<Home />}>
                         <Route index element={<Index />} />
-                        <Route path='register' element={<Register />} />
+                        <Route path='register' element={<Registers />} />
                         <Route path="login" element={(
                             getLocalStorageItem('Data')
                                 ? <Navigate replace to="/view" />
