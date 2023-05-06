@@ -25,7 +25,7 @@ export const Teacher = ({ setActiveComponent }) => {
                 <FormInput label="Subject" type="text" id="Subject" name="Subject" value={values.Subject} onChange={handleChange} onBlur={handleBlur} required />
                 <PasswordInput containerClassName={Style.formgroup} handleChange={handleChange} handleBlur={handleBlur} values={values} register
                 />
-                <FormGroup label="Classroom" id="classroom" name="classroom" type="text" handleChange={handleChange} handleBlur={handleBlur} value={values.classes} required={true} autoComplete='off' />
+                <FormGroup label="classroom" id="classes" name="classes" type="text" handleChange={handleChange} handleBlur={handleBlur} value={values.classes} required={true} autoComplete='off' />
                 <button type="submit" className='btn'>Register</button>
                 <hr className='hr' />
                 <a className={Style.asbtn} onClick={handleClick}>

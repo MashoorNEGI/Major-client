@@ -1,5 +1,5 @@
 import React from 'react'
-import Style from './css/Login.module.css'
+import Style from 'src/components/css/Login.module.css'
 import { MdAccountCircle } from 'react-icons/md'
 import useFormikValues from 'src/Hooks/useFormSubmit';
 import FormGroup from '../Form/FormGroup';
