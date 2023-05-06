@@ -7,6 +7,9 @@ import { Search } from 'src/components/services/Search'
 import Schedule from 'src/Pages/Schedule'
 import Setting from 'src/components/Setting';
 import { getLocalStorageItem } from 'src/utils/Localstorage';
+import Controls from 'src/Admin/Index';
+import Create from 'src/Admin/Create'
+import Record from 'src/Admin/Record';
 const Register = lazy(() => import('src/Pages/Register'))
 const Home = lazy(() => import('src/Pages/Home'));
 const About = lazy(() => import('src/Pages/About'));
@@ -14,7 +17,6 @@ const Timetable = lazy(() => import('src/Pages/TimeTable'));
 const Index = lazy(() => import('src/components/home/Home'));
 const Login = lazy(() => import('src/Pages/Login'));
 const Contact = lazy(() => import('src/Pages/Contact'))
-const Control = lazy(() => import('src/Admin/Controls'));
 const Routes = () => {
 
     return (
@@ -35,7 +37,11 @@ const Routes = () => {
                             <Route path='search' element={<Search />} />
                             <Route path='Setting' element={<Setting />} />
                         </Route>
-                        <Route path='controls' element={<Control />} />
+                        <Route path='controls' element={<Controls />}>
+                            <Route path='search' element={<Search />} />
+                            <Route path='Create' element={<Create />} />
+                            <Route path='Record' element={<Record />} />
+                        </Route>
                         <Route path='About' element={<About />} />
                         <Route path='contact' element={<Contact />} />
                     </Route>

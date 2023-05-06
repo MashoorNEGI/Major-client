@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import "./css/header.css";
@@ -7,7 +7,6 @@ import { MdOutlineLogout } from 'react-icons/md';
 
 const Header = ({ data }) => {
     const [ isOpen, setIsOpen ] = useState(false);
-    const Navigate = useNavigate();
     const ref = useRef(null);
 
     useEffect(() => {
@@ -30,7 +29,7 @@ const Header = ({ data }) => {
             closeOnClick: true,
             pauseOnHover: true,
             onClose: () => {
-                Navigate('/')
+                window.location = '/'
                 localStorage.clear();
             },
             draggable: true,

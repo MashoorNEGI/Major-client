@@ -35,5 +35,4 @@ const Schedule = () => {
   )
 }
 
-// export default Schedule
 export default withAuth(Schedule) 
