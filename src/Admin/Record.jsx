@@ -34,7 +34,13 @@ const Record = () => {
     };
 
     const handleDelete = record => {
-        const newDataSource = dataSource.filter(item => item.key !== record.key);
+        const data = {
+            email: record.email,
+            accountType: record.accountType
+        }
+        const newDataSource = dataSource.filter(item =>
+            item.key !== record.key);
+        ApiRequest('deleteUser', 'POST',data, { authorization: false })
         setDataSource(newDataSource);
         setPagination({ ...pagination, total: newDataSource.length });
     };

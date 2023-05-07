@@ -1,5 +1,5 @@
 import React from 'react';
-import Style from './css/Table.module.css';
+import Style from 'src/components/css/Table.module.css';
 import { triggerNotification } from 'src/utils/Notification';
 import { getLocalStorageItem } from 'src/utils/Localstorage';
 const Time = ({ timetable }) => {
