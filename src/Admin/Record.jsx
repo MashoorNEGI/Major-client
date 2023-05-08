@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Table, Button } from "antd";
+
 import ApiRequest from "src/API/apirequest";
 import { v4 as uuidv } from 'uuid'
 
@@ -40,7 +41,7 @@ const Record = () => {
         }
         const newDataSource = dataSource.filter(item =>
             item.key !== record.key);
-        ApiRequest('deleteUser', 'POST',data, { authorization: false })
+        ApiRequest('deleteUser', 'POST', data, { authorization: false })
         setDataSource(newDataSource);
         setPagination({ ...pagination, total: newDataSource.length });
     };
@@ -64,7 +65,9 @@ const Record = () => {
     return (
         <div style={{ margin: "auto", width: "90%" }}>
             <h1 align="center" style={{ padding: "50px" }}>Admin Page</h1>
-            <Table dataSource={dataSource} onChange={handleTableChange} pagination={pagination} columns={columns} />
+            <Table dataSource={dataSource} onChange={handleTableChange}
+                scroll={{ x: true }}
+                pagination={pagination} columns={columns} />
         </div>
     );
 };

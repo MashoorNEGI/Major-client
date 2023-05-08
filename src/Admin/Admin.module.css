@@ -50,3 +50,26 @@
     width: 100%;
     max-width: 300px;
 }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 100px;
+}
+
+.Child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    width: 30vw;
+    padding: 20px;
+}
+
+
+@media (max-width: 768px) {
+    .ant-table-wrapper {
+        height: 500px;
+    }
+}
