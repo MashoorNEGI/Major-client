@@ -2,10 +2,9 @@ import { momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import styles from "./Admin.module.css";
-import withAuth from "src/Hooks/Auth";
 import { handleSelect, handleKeyPress } from "src/Func/Calender";
 import { useState } from 'react'
-import { Calender } from "src/components/Calendar";
+import { Calender } from "src/components/Table/Calendar";
 import { useDaysState } from "src/Func/Data";
 import ApiRequest from "src/API/apirequest";
 const Create = () => {
@@ -47,4 +46,4 @@ const Create = () => {
     );
 };
 
-export default withAuth(Create)
+export default Create

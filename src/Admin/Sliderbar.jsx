@@ -5,8 +5,8 @@ import Cookies from 'js-cookie';
 import { FaAngleRight, FaAngleLeft, FaBars, FaUsersCog } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Style from 'src/Pages/css/schedule.module.css';
-import { BiSearchAlt } from 'react-icons/bi';
-import { MdOutlineSettings, MdMenu, MdOutlineLogout, MdCreate } from 'react-icons/md';
+import { BiSearchAlt, BiTable } from 'react-icons/bi';
+import { MdMenu, MdOutlineLogout, MdCreate } from 'react-icons/md';
 
 const Slidebar = ({ show, visible, ICON_SIZE }) => {
     const handleLogout = () => {
@@ -43,11 +43,15 @@ const Slidebar = ({ show, visible, ICON_SIZE }) => {
                             <MdCreate size={ICON_SIZE} />
                             <span>Create</span>
                         </Link>
+                        <Link to={"/controls/TeacherRecord"} className={Style.navlink}>
+                            <BiTable size={ICON_SIZE} />
+                            <span>Tables</span>
+                        </Link>
                         <Link to="/controls/search" className={Style.navlink}>
                             <BiSearchAlt size={ICON_SIZE} />
                             <span>Search</span>
                         </Link>
-                        <Link to="/controls/record" className={Style.navlink}>
+                        <Link to="/controls/UserRecord" className={Style.navlink}>
                             <FaUsersCog size={ICON_SIZE} />
                             <span>Record</span>
                         </Link>

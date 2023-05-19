@@ -4,7 +4,7 @@ import { Table, Button } from "antd";
 import ApiRequest from "src/API/apirequest";
 import { v4 as uuidv } from 'uuid'
 
-const Record = () => {
+const TeacherRecord = () => {
     const [ dataSource, setDataSource ] = useState([]);
     const [ pagination, setPagination ] = useState({ current: 1, pageSize: 4, total: 0 });
 
@@ -13,17 +13,13 @@ const Record = () => {
     }, []);
 
     const fetchData = async () => {
-        const res = await ApiRequest("record", "GET", null, { authorization: false });
+        const res = await ApiRequest("Tablerecord", "GET", null, { authorization: false });
         if (res) {
             const data = Object.values(res);
             const newData = data.flatMap((item, index) => item.map(record => ({
                 key: uuidv(),
-                name: record.name,
-                accountType: index === 1 ? "Teacher" : "Student",
-                email: record.email,
-                password: "xxxx",
-                subject: record.subjects || '----',
-                class: record.class || '----'
+                timetable: index === 1 ? "Teacher" : "Class",
+                name: record.class || record.teacheremail,
             })));
             setDataSource(newData);
             setPagination({ ...pagination, total: newData.length });
@@ -33,28 +29,21 @@ const Record = () => {
     const handleTableChange = pagination => {
         setPagination(pagination);
     };
-
     const handleDelete = record => {
-        const data = {
-            email: record.email,
-            accountType: record.accountType
-        }
+        const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(record.name)
+        const data = { type: `${regex ? 'Teacher' : 'class'}`, name: record.name }
         const newDataSource = dataSource.filter(item =>
             item.key !== record.key);
-        ApiRequest('deleteUser', 'POST', data, { authorization: false })
+        ApiRequest('deleteTable', 'POST', data, { authorization: false })
         setDataSource(newDataSource);
         setPagination({ ...pagination, total: newDataSource.length });
     };
 
     const columns = [
-        { title: "Name", dataIndex: "name", key: "name" },
-        { title: "Account Type", dataIndex: "accountType", key: "accountType" },
-        { title: "Email", dataIndex: "email", key: "email" },
-        { title: "Password", dataIndex: "password", key: "password" },
-        { title: "Subject", dataIndex: "subject", key: "subject" },
-        { title: "Class", dataIndex: "class", key: "class" },
+        { title: "Timetable", dataIndex: "timetable", key: "timetable", align: 'center' },
+        { title: "Name", dataIndex: "name", key: "name", align: 'center' },
         {
-            title: "Action", key: "action", render: (_, record) => (
+            title: "Action", key: "action", align: 'center', render: (_, record) => (
                 <Button type="primary" danger onClick={() => handleDelete(record)}>
                     Delete
                 </Button>
@@ -72,4 +61,4 @@ const Record = () => {
     );
 };
 
-export default Record;
+export default TeacherRecord;

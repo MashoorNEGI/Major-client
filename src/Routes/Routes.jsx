@@ -9,9 +9,9 @@ import Setting from 'src/components/Setting';
 import { getLocalStorageItem } from 'src/utils/Localstorage';
 import Controls from 'src/Admin/Index';
 import Create from 'src/Admin/Create'
-import Record from 'src/Admin/Record';
-// const Registers = lazy(() => import('src/Pages/Registers'))
 import Registers from 'src/Pages/Register';
+import UserRecord from 'src/Admin/UserRecord';
+import TeacherRecord from 'src/Admin/TeacherRecord';
 const Home = lazy(() => import('src/Pages/Home'));
 const About = lazy(() => import('src/Pages/About'));
 const Timetable = lazy(() => import('src/Pages/TimeTable'));
@@ -41,7 +41,8 @@ const Routes = () => {
                         <Route path='controls' element={<Controls />}>
                             <Route path='search' element={<Search />} />
                             <Route path='Create' element={<Create />} />
-                            <Route path='Record' element={<Record />} />
+                            <Route path='UserRecord' element={<UserRecord/>} />
+                            <Route path='TeacherRecord' element={<TeacherRecord/>} />
                         </Route>
                         <Route path='About' element={<About />} />
                         <Route path='contact' element={<Contact />} />

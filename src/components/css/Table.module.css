@@ -1,65 +1,26 @@
-.inputcontainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.leftinput {
-  flex-basis: 40%;
-  margin-right: 10px;
-}
-
-.rightinput {
-  flex-basis: 40%;
-}
-
-.inputlabel {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.inputfield {
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.timetable {
-  overflow-x: auto;
+.break {
+  background-color: #ccc;
+  width: 50%;
+  font-style: italic;
   margin: auto;
 }
 
-.timetable table {
-  border-collapse: collapse;
-}
-
-.timetable th,
-.timetable td {
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #ccc;
-}
-
-@media screen and (max-width: 768px) {
-  .leftinput,
-  .rightinput {
-    flex-basis: 100%;
-    margin-right: 0;
-    margin-bottom: 10px;
+@keyframes blink {
+  0% {
+    background-color: #fff;
   }
-  .timetable{
-     width: 98%;
-     margin: auto;
+
+  50% {
+    background-color: #ff0;
+  }
+
+  100% {
+    background-color: #fff;
   }
 }
 
-.break{
-  color: blue;
-  background-color:#ccc;
-}
-.active{
-  color: red;
+.active {
+  width: 50%;
+  margin: auto;
+  animation: blink 1s infinite;
 }

@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import Slidebar from './Sliderbar'
 import { useState } from 'react';
 import Styles from './Admin.module.css'
+import withAuth from 'src/Hooks/Auth';
 const ICON_SIZE = 20;
 const Controls = () => {
     const [ navVisible, showNavbar ] = useState('');
@@ -21,4 +22,4 @@ const Controls = () => {
     )
 }
 
-export default Controls
+export default withAuth(Controls)
