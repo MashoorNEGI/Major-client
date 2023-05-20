@@ -11,7 +11,7 @@ export const Search = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await ApiRequest('timetables', 'GET', null, { authorization: false })
+      const response = await ApiRequest('timetables', 'GET', null, { authorization: true })
       setData(Object.values(response));
       console.log(Object.values(response))
     } catch (error) {

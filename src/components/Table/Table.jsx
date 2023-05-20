@@ -1,35 +1,32 @@
 import React from 'react';
+import { Table, Button} from 'antd';
 import Style from 'src/components/css/Table.module.css';
-const Time = ({ timetable }) => {
-    const days = timetable.days;
-    const now = new Date();
-    const day = now.toLocaleDateString('en-US', { weekday: 'long' });
-    const systemTime = new Date();
-    const hours = systemTime.getHours();
-    const minutes = systemTime.getMinutes();
-    const time = `${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
-    const currentTime = time // outputs something like "09:00"
-    const currentday = day // outputs something like "Monday"
 
-    // const [ currentTime, setCurrentTime ] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }));
+const Time = ({ timetable,onclick }) => {
+    const now = new Date();
+    const currentTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    const currentDay = now.toLocaleDateString('en-US', { weekday: 'long' });
+
     const getSlot = (day, slotIndex) => {
         const slot = day.periods[ slotIndex ];
         if (!slot) {
             return null;
         }
-        if (slot) {
+        const isActive = currentTime > slot.start_time && currentTime <= slot.end_time && currentDay === day.day;
+
+        if (slot.subject === 'Break') {
+            return <div className={Style.break}>{slot.subject}</div>;
         }
-        const isActive = currentTime > slot.start_time && currentTime <= slot.end_time && currentday === day.day
-        // const isActive = true && currentday === day.day
+
         return (
-            <div className={`${Style.periodWrapper} ${isActive ? Style.active : ''}`} >
+            <div className={`${Style.periodWrapper} ${isActive ? Style.active : ''}`}>
                 <div className={Style.class}>{slot.class}</div>
                 <div className={Style.subject}>{slot.subject}</div>
             </div>
         );
     };
 
-    const fillInGaps = (day) => {
+    const daysWithGaps = timetable.days.map((day) => {
         const newPeriods = [];
         for (let i = 0; i < day.periods.length; i++) {
             const currentSlot = day.periods[ i ];
@@ -37,66 +34,41 @@ const Time = ({ timetable }) => {
             if (currentSlot) {
                 newPeriods.push(currentSlot);
                 if (nextSlot && nextSlot.start_time !== currentSlot.end_time) {
-
+                    newPeriods.push({
+                        start_time: currentSlot.end_time, end_time: nextSlot.start_time, subject: 'Break',
+                    });
                 }
             }
         }
         return { ...day, periods: newPeriods };
-    };
+    });
 
-    const daysWithGaps = days.map(fillInGaps);
+    const periodTimes = [ ...new Set(daysWithGaps.flatMap((day) => day.periods.map((period) => period.start_time))) ].sort();
 
-    const getPeriodTimes = () => {
-        const periodTimes = [];
-        days.forEach((day) => {
-            day.periods.forEach((period) => {
-                const startTime = period.start_time;
-                const endTime = period.end_time;
-                if (!periodTimes.includes(startTime)) {
-                    periodTimes.push(startTime);
-                }
-                if (!periodTimes.includes(endTime)) {
-                    periodTimes.push(endTime);
-                }
-            });
-        });
-        return periodTimes.sort();
-    };
+    const columns = [
+        {
+            title: 'Time', dataIndex: 'time', key: 'time', className: Style.period, align: 'center', width: 90,
+        }, ...daysWithGaps.map((day) => ({
+            title: day.day, dataIndex: day.day, key: day.day, className: Style.day, align: 'center', width: 90, render: (text, record) => getSlot(day, record.periodIndex),
+        })),
+    ];
 
-    const periodTimes = getPeriodTimes();
+    const data = periodTimes.map((time, i) => ({
+        key: time, time: time, periodIndex: i, ...daysWithGaps.reduce((acc, day) => ({ ...acc, [ day.day ]: '' }), {}),
+    }));
+
     return (
         <div className={Style.timetable}>
-            <table>
-                <thead>
-                    <tr>
-                        <th className={Style.period}>Time</th>
-                        {daysWithGaps.map((day) => (
-                            <th key={day.day} className={Style.day}>
-                                {day.day}
-                            </th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    {periodTimes.map((time, i) => (
-                        <tr key={time}>
-                            <td className={Style.period}>{time}</td>
-                            {daysWithGaps.map((day) => {
-                                const periodIndex = day.periods.findIndex(
-                                    (period) => period.start_time === time
-                                );
-                                return (
-                                    <td key={day.day} className={Style.day}>
-                                        {getSlot(day, periodIndex)
-                                            || (<div className={Style.break}>Break</div>)
-                                        }
-                                    </td>
-                                );
-                            })}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <Table
+                columns={columns}
+                dataSource={data}
+                pagination={false}
+                scroll={{ x: true }}
+                bordered
+                size="small"
+            />
+            <br/>
+            <Button type='primary' className=' btn-print' onClick={onclick} style={{float:'right'}}>hello</Button>
         </div>
     );
 };

@@ -44,10 +44,7 @@ function Timetable() {
       timetableData
         ? <div className={`div-center ${printMode ? 'print-mode' : ''}`}>
           <h1 className='text-center'>{name} Timetable</h1>
-          <Time timetable={timetableData} />
-          <button className="btn btn-print" onClick={handlePrint}>
-            Print
-          </button>
+          <Time onclick={handlePrint} timetable={timetableData} />
         </div>
         : <h1 className='text-center'>Data Not Found</h1>
   );
