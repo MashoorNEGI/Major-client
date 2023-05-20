@@ -11,8 +11,9 @@ export const Search = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await ApiRequest('timetables', 'GET', null, { authorization: true })
-      setData(response);
+      const response = await ApiRequest('timetables', 'GET', null, { authorization: false })
+      setData(Object.values(response));
+      console.log(Object.values(response))
     } catch (error) {
       console.log(error);
     } finally {
@@ -30,30 +31,40 @@ export const Search = () => {
   return (
     <>
       <div className='div-center'>
-        <input className={Style.input} name="class" placeholder="Search..." onChange={(e) => setSearch(e.target.value)} type="search"></input>
+        <input className={Style.input} name="class" placeholder="Search..." onChange={(e) => setSearch(e.target.value)} type="search" />
         <div className={Style.table}>
-          {
-            loading ?
-              <APIloader />
-              : data &&
-              data.filter((data) => {
-                return search === ' ' ? data : data.class.toLowerCase().includes(search);
-              }).map((data, i) => {
+          {loading ? (
+            <APIloader />
+          ) : (
+            data &&
+            data
+              .filter((data) => {
+                const classMatch = data.class && data.class.toLowerCase().includes(search.toLowerCase());
+                const teacherMatch = data.teacheremail && data.teacheremail.toLowerCase().includes(search.toLowerCase());
+                return search.trim() === '' ? data : (classMatch || teacherMatch);
+              })
+              .map((data, i) => {
+                const teacherName = data.teacheremail && data.teacheremail.split('@')[ 0 ]; // Extract the name from email
                 return (
-                  <div key={i} className={Style.book} onClick={() => {
-                    window.location = `/view/${data.class}`
-                  }}>
+                  <div
+                    key={i}
+                    className={Style.book}
+                    onClick={() => {
+                      window.location = `/view/${data.class}`;
+                    }}
+                  >
                     <p>CLICK ME</p>
                     <div key={i} className={Style.cover}>
-                      <p>{data.class}</p>
+                      <p>{data.class || teacherName}</p> {/* Display teacherName instead of data.teacheremail */}
                     </div>
                   </div>
-                )
+                );
               })
-          }
-
+          )}
         </div>
       </div>
+
+
     </>
   )
 }
