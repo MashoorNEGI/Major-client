@@ -50,7 +50,7 @@ export const Search = () => {
                     key={i}
                     className={Style.book}
                     onClick={() => {
-                      window.location = `/view/${data.class}`;
+                      window.location = `/view/${data.class || teacherName}`;
                     }}
                   >
                     <p>CLICK ME</p>

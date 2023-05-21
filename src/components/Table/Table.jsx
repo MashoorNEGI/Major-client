@@ -68,7 +68,7 @@ const Time = ({ timetable,onclick }) => {
                 size="small"
             />
             <br/>
-            <Button type='primary' className=' btn-print' onClick={onclick} style={{float:'right'}}>hello</Button>
+            <Button type='primary' className='btn-print' onClick={onclick} style={{float:'right'}}>Print</Button>
         </div>
     );
 };
