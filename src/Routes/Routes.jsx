@@ -36,6 +36,7 @@ const Routes = () => (
                     </Route>
                     <Route path="controls" element={<Controls />}>
                         <Route path="search" element={<Search />} />
+                        <Route path=":name" element={<Timetable />} />
                         <Route path="Create" element={<Create />} />
                         <Route path="UserRecord" element={<UserRecord />} />
                         <Route path="TeacherRecord" element={<TeacherRecord />} />

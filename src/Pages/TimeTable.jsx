@@ -31,8 +31,8 @@ function Timetable() {
 
   return (
     <div className={`div-center ${printMode ? 'print-mode' : ''}`}>
-      {timetableData ? <> <h1 className='text-center'>{name} Timetable</h1>
-        <Time onclick={handlePrint} timetable={timetableData} /></> : <APIloader />}
+      {timetableData ?<> <h1 className='text-center'>{name} Timetable</h1>
+       <Time onclick={handlePrint} timetable={timetableData} /></> : <APIloader />}
     </div>
   );
 }

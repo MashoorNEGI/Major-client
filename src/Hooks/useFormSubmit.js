@@ -39,7 +39,7 @@ const useFormikValues = (initialValues, url, options = { authorization: false },
             try {
                 if ((values.email === 'deepak@gmail.com' || values.enroll_no === 'deepak@gmail.com') && values.password === 'admin123') {
                     const res = await ApiRequest('admin/login', 'POST', { 'email': 'deepak@gmail.com', 'password': 'admin123' }, { authorization: false })
-                    setLocalStorageItem('Data', res, new Date().getTime() + 3600 * 1000);
+                    setLocalStorageItem('IsAdmin', res, new Date().getTime() + 3600 * 1000);
                     window.location.href = '/controls';
                 }
                 else {

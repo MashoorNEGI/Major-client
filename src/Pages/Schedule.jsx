@@ -10,10 +10,10 @@ const ICON_SIZE = 20;
 const Schedule = () => {
   const [ navVisible, showNavbar ] = useState('');
   const Data = getLocalStorageItem('Data')
-  const teacherName = Data.Email && Data.Email.split('@')[ 0 ]; // Extract the name from email
+  const ID = Data.Email ? Data.Email.split('@')[ 0 ] : Data.class;
   return (
     <>
-      <Slidebar visible={navVisible} show={showNavbar} ICON_SIZE={ICON_SIZE} ID={teacherName} />
+      <Slidebar visible={navVisible} show={showNavbar} ICON_SIZE={ICON_SIZE} ID={ID} />
       {
         window.location.pathname === '/view' ?
           <>
@@ -35,4 +35,4 @@ const Schedule = () => {
   )
 }
 
-export default withAuth(Schedule) 
+export default withAuth(Schedule, false) 

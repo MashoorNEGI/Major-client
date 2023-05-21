@@ -22,4 +22,4 @@ const Controls = () => {
     )
 }
 
-export default withAuth(Controls)
+export default withAuth(Controls, true)

@@ -23,7 +23,7 @@ const showToast = (message, type, redirect) => {
     }
 }
 const getAuthorizationHeader = () => {
-    const token = getLocalStorageItem('Data').auth;
+    const token = (getLocalStorageItem('Data')?.auth || getLocalStorageItem('IsAdmin')?.auth);
     return `bearer ${token}`;
 };
 

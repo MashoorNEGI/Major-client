@@ -13,7 +13,6 @@ export const Search = () => {
     try {
       const response = await ApiRequest('timetables', 'GET', null, { authorization: true })
       setData(Object.values(response));
-      console.log(Object.values(response))
     } catch (error) {
       console.log(error);
     } finally {
@@ -50,7 +49,9 @@ export const Search = () => {
                     key={i}
                     className={Style.book}
                     onClick={() => {
-                      window.location = `/view/${data.class || teacherName}`;
+                      let isAdmin = localStorage.getItem('IsAdmin') !== null;
+                      let redirectTo = isAdmin ? '/controls' : '/view';
+                      window.location = `${redirectTo}/${teacherName || data.class}`;
                     }}
                   >
                     <p>CLICK ME</p>
