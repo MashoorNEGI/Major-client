@@ -1,11 +1,16 @@
 import React from 'react';
-import { Table, Button} from 'antd';
+import { Table, Button } from 'antd';
 import Style from 'src/components/css/Table.module.css';
 
-const Time = ({ timetable,onclick }) => {
+const Time = ({ timetable, onclick }) => {
     const now = new Date();
-    const currentTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-    const currentDay = now.toLocaleDateString('en-US', { weekday: 'long' });
+    const day = now.toLocaleDateString('en-US', { weekday: 'long' });
+    const systemTime = new Date();
+    const hours = systemTime.getHours();
+    const minutes = systemTime.getMinutes();
+    const time = `${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+    const currentTime = time // outputs something like "09:00"
+    const currentDay = day // outputs something like "Monday"
 
     const getSlot = (day, slotIndex) => {
         const slot = day.periods[ slotIndex ];
@@ -67,8 +72,8 @@ const Time = ({ timetable,onclick }) => {
                 bordered
                 size="small"
             />
-            <br/>
-            <Button type='primary' className='btn-print' onClick={onclick} style={{float:'right'}}>Print</Button>
+            <br />
+            <Button type='primary' className='btn-print' onClick={onclick} style={{ float: 'right' }}>Print</Button>
         </div>
     );
 };
