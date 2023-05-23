@@ -4,11 +4,12 @@ import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import "./css/header.css";
 import { MdOutlineLogout } from 'react-icons/md';
+import { getLocalStorageItem } from "src/utils/Localstorage";
 
 const Header = ({ data }) => {
     const [ isOpen, setIsOpen ] = useState(false);
     const ref = useRef(null);
-
+    const route = getLocalStorageItem('Data') ? '/view' : (getLocalStorageItem('IsAdmin') ? '/controls' : '/view');
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (ref.current && !ref.current.contains(event.target)) {
@@ -45,7 +46,7 @@ const Header = ({ data }) => {
             <div className={`menu ${isOpen ? "active" : ""}`}>
                 <ul className="list">
                     <li className="navlinks"><NavLink to="/" onClick={handleMenuClick}>Home</NavLink></li>
-                    <li className="navlinks"><NavLink to='/view' onClick={handleMenuClick}>Schedule</NavLink></li>
+                    <li className="navlinks"><NavLink to={route} onClick={handleMenuClick}>Schedule</NavLink></li>
                     <li className="navlinks"><NavLink to="/contact" onClick={handleMenuClick}>Contact</NavLink></li>
                     <li className="navlinks"><NavLink to="/About" onClick={handleMenuClick}>About</NavLink></li>
                 </ul>
