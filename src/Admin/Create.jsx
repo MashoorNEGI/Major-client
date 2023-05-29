@@ -11,10 +11,13 @@ const Create = () => {
     const [ events, setEvents ] = useState([]);
     const [ input1, setInput1 ] = useState("");
     const [ days, setDays ] = useDaysState()
-    const data = { class: input1, days }
+    const Start = moment().startOf("day").set({ hour: 17, minute: 30 });
+    const end = moment().startOf("day").set({ hour: 8, minute: 30 });
+    const data = { start_time: `${end.hour()}:${end.minute()}`, end_time: `${Start.hour()}:${Start.minute()}`, class: input1, days }
     const localizer = momentLocalizer(moment);
     const onSelect = handleSelect(days, setDays, events, setEvents);
     const onKeyPress = handleKeyPress(days, setDays, events, setEvents);
+
     const handleInput1Change = (event) => {
         setInput1(event.target.value);
     };
