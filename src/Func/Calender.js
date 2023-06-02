@@ -5,8 +5,8 @@ import { removeEventFromDays } from "src/utils/Event";
 export const handleSelect = (days, setDays, events, setEvents) => ({ start, end }) => {
     const subject = window.prompt("Enter a subject name:");
     if (subject) {
-        const startTime = moment(start).format("hh:mm A");
-        const endTime = moment(end).format("hh:mm A");
+        const startTime = moment(start).format("hh:mm");
+        const endTime = moment(end).format("hh:mm");
         const dayOfWeek = moment(start).format("dddd");
         const eventId = uuidv4();
 
