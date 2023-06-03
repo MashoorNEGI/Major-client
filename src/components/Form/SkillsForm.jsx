@@ -35,15 +35,14 @@ const SkillsForm = ({ teachervalues, setTeachervalues }) => {
 
     return (
         <div className={Style.formgroup} style={{ marginTop: '20px' }}>
-                <input
-                    type="text"
-                    value={skill}
-                    onChange={handleSkillChange}
-                    onKeyPress={handleSkillKeyPress}
-                    placeholder="Enter a skill and press Enter"
-                    style={{ marginRight: '10px', padding: '5px' }}
-                />
-            <ul style={{ listStyleType: 'none', padding: 0 }}>
+            <input
+                type="text"
+                value={skill}
+                onChange={handleSkillChange}
+                onKeyPress={handleSkillKeyPress}
+                placeholder="Enter a skill"
+            />  
+            <ul style={{ listStyleType: 'none', padding: 0, margin: '20px' }}>
                 {skills.map((skill, index) => (
                     <li
                         key={index}

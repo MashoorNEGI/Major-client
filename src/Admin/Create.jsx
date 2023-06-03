@@ -28,13 +28,17 @@ const Create = () => {
         <div style={{ width: "90%", margin: "auto" }}>
             <div className={styles.inputcontainer}>
                 <label htmlFor="classname" className={styles.Adminlabel}>Class Name</label>
-                <input className={styles.Admininput}
+                <select className={styles.Admininput}
                     type="text"
                     id="className"
                     value={input1}
                     placeholder="Enter className"
                     onChange={handleInput1Change}
-                />
+                >
+                    <option>BCA</option>
+                    <option>BBA</option>
+                    <option>B.com</option>
+                </select>
             </div>
             <div className={styles.rbcbtngroup}>
                 <button className={styles.calendarbutton} onClick={handleSubmit}>Create</button>
