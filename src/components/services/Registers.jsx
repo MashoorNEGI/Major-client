@@ -2,7 +2,6 @@ import React from 'react'
 import Style from 'src/components/css/Login.module.css'
 import { MdAccountCircle } from 'react-icons/md';
 import FormInput from '../Form/Forminput';
-import FormGroup from '../Form/FormGroup';
 import useFormikValues from 'src/Hooks/useFormSubmit';
 import PasswordInput from '../Form/PasswordInput';
 import SkillsForm from '../Form/SkillsForm';
@@ -10,10 +9,9 @@ const studentvalues = {
     name: "", email: "", enroll_no: "", password: "", classes: ""
 }
 export const Teacher = ({ setActiveComponent }) => {
-const [ teachervalues, setTeachervalues ] = React.useState({
-    name: "", email: "", "Subject": [], password: "", classes: ""
-})
-    console.log("🚀 ~ file: Registers.jsx:16 ~ Teacher ~ teachervalues:", teachervalues)
+    const [ teachervalues, setTeachervalues ] = React.useState({
+        name: "", email: "", "Subject": [], password: "",
+    })
     const handleClick = () => {
         setActiveComponent('student');
     };
@@ -23,7 +21,7 @@ const [ teachervalues, setTeachervalues ] = React.useState({
     return (
         <>
             <form className={Style.registerform} method='POST' onSubmit={handleSubmit} data-aos="fade-up">
-                <h2>Register</h2>
+                <h2>Teacher Registration</h2>
                 <FormInput label="Name" type="text" id="name" name="name" value={values.name} onChange={handleChange} onBlur={handleBlur} required />
                 <FormInput label="Email" type="email" id="email" name="email" value={values.email} onChange={handleChange} onBlur={handleBlur} required />
                 <PasswordInput containerClassName={Style.formgroup} handleChange={handleChange} handleBlur={handleBlur} values={values} register />
@@ -48,7 +46,7 @@ export const Student = ({ setActiveComponent }) => {
     return (
         <>
             <form className={Style.registerform} method='POST' onSubmit={handleSubmit} data-aos="fade-up">
-                <h2>Register</h2>
+                <h2>Student Registration</h2>
                 <FormInput label="Name" type="text" id="name" name="name" value={values.name} onChange={handleChange} onBlur={handleBlur} required />
                 <FormInput label="Email" type="email" id="email" name="email" value={values.email} onChange={handleChange} onBlur={handleBlur} required />
                 <FormInput label="Enroll Number" type="text" id="enroll_no" name="enroll_no" value={values.enroll_no} onChange={handleChange} onBlur={handleBlur} required />

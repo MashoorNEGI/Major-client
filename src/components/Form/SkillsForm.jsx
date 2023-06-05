@@ -10,6 +10,7 @@ const SkillsForm = ({ teachervalues, setTeachervalues }) => {
     };
 
     const handleSkillKeyPress = (e) => {
+        console.log("render")
         if (e.key === 'Enter' && skill.trim() !== '') {
             setSkills([ ...skills, skill ]);
             setSkill('');
@@ -39,7 +40,7 @@ const SkillsForm = ({ teachervalues, setTeachervalues }) => {
                 type="text"
                 value={skill}
                 onChange={handleSkillChange}
-                onKeyPress={handleSkillKeyPress}
+                onMouseDown={handleSkillKeyPress}
                 placeholder="Enter a skill"
             />  
             <ul style={{ listStyleType: 'none', padding: 0, margin: '20px' }}>
