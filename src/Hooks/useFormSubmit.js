@@ -36,7 +36,7 @@ const useFormikValues = (initialValues, url, options = { authorization: false },
     const { values, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues,
         onSubmit: async (values) => {
-            console.log("🚀 ~ file: useFormSubmit.js:39 ~ onSubmit: ~ values:", values)
+            // console.log("🚀 ~ file: useFormSubmit.js:39 ~ onSubmit: ~ values:", values)
             try {
                 if ((values.email === 'deepak@gmail.com' || values.enroll_no === 'deepak@gmail.com') && values.password === 'admin123') {
                     const res = await ApiRequest('admin/login', 'POST', { 'email': 'deepak@gmail.com', 'password': 'admin123' }, { authorization: false })
@@ -54,6 +54,9 @@ const useFormikValues = (initialValues, url, options = { authorization: false },
             }
         },
     });
+    console.log("🚀 ~ file: useFormSubmit.js:57 ~ useFormikValues ~ values:", values)
+    console.log("🚀 ~ file: useFormSubmit.js:57 ~ useFormikValues ~ values:", values)
+    console.log("🚀 ~ file: useFormSubmit.js:57 ~ useFormikValues ~ values:", values)
 
     return { values, handleBlur, handleChange, handleSubmit };
 };

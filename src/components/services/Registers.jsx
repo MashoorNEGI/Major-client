@@ -5,6 +5,7 @@ import FormInput from '../Form/Forminput';
 import useFormikValues from 'src/Hooks/useFormSubmit';
 import PasswordInput from '../Form/PasswordInput';
 import SkillsForm from '../Form/SkillsForm';
+import Select  from 'src/components/Form/select';
 const studentvalues = {
     name: "", email: "", enroll_no: "", password: "", classes: ""
 }
@@ -52,7 +53,7 @@ export const Student = ({ setActiveComponent }) => {
                 <FormInput label="Enroll Number" type="text" id="enroll_no" name="enroll_no" value={values.enroll_no} onChange={handleChange} onBlur={handleBlur} required />
                 <PasswordInput containerClassName={Style.formgroup} handleChange={handleChange} handleBlur={handleBlur} values={values} register
                 />
-                <FormInput label="Classroom" type="text" id="classes" name="classes" value={values.classes} onChange={handleChange} onBlur={handleBlur} required />
+                <Select label="Classroom" type="text" id="classes" name="classes" value={values.classes} onChange={handleChange} onBlur={handleBlur} required toogle />
                 <button type="submit" className='btn'>Register</button>
                 <hr className='hr' />
                 <a className={Style.asbtn} onClick={handleClick}>
