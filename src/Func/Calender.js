@@ -1,10 +1,11 @@
 import moment from "moment";
 import { v4 as uuidv4 } from "uuid";
 import { removeEventFromDays } from "src/utils/Event";
+import { subject } from "src/utils/subject";
 
 
 export const handleSelect = (days, setDays, events, setEvents) => ({ start, end }) => {
-    createSelectDialog("Select a subject:", [ "Option 1", "Option 2", "Option 3" ], (selectedSubject) => {
+    createSelectDialog("Select a subject:", subject, (selectedSubject) => {
         if (selectedSubject) {
             const startTime = moment(start).format("hh:mm");
             const endTime = moment(end).format("hh:mm");
@@ -17,7 +18,6 @@ export const handleSelect = (days, setDays, events, setEvents) => ({ start, end 
                 end,
                 subject: selectedSubject,
             };
-
             const updatedDays = days.map((day) => {
                 if (day.day === dayOfWeek) {
                     day.periods.push({
@@ -37,7 +37,6 @@ export const handleSelect = (days, setDays, events, setEvents) => ({ start, end 
 
 const createSelectDialog = (message, options, callback) => {
     const selectElement = document.createElement("select");
-
     options.forEach((option) => {
         const optionElement = document.createElement("option");
         optionElement.text = option;
@@ -46,23 +45,41 @@ const createSelectDialog = (message, options, callback) => {
 
     const buttonElement = document.createElement("button");
     buttonElement.textContent = "OK";
-
+    Object.assign(buttonElement.style, {
+        padding: '5px',
+        border: "none",
+        borderRadius: "10px",
+    })
     const containerElement = document.createElement("div");
-    containerElement.appendChild(document.createTextNode(message));
-    containerElement.appendChild(selectElement);
-    containerElement.appendChild(buttonElement);
+    Object.assign(containerElement.style, {
+        margin: "10px auto",
+        padding: "10px",
+    });
 
     const dialog = document.createElement("dialog");
-    dialog.appendChild(containerElement);
+    Object.assign(dialog.style, {
+        width: "max-content",
+        margin: "10px auto",
+        padding: "10px",
+        border: "none",
+        borderRadius: "10px",
+    });
 
     buttonElement.addEventListener("click", () => {
         dialog.close();
         callback(selectElement.value);
     });
 
+    containerElement.appendChild(document.createTextNode(message));
+    containerElement.appendChild(selectElement);
+    containerElement.appendChild(buttonElement);
+
+    dialog.appendChild(containerElement);
+
     document.body.appendChild(dialog);
     dialog.showModal();
 };
+
 
 
 export const handleKeyPress = (days, setDays, events, setEvents) => (event) => {
