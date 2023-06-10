@@ -54,10 +54,6 @@ const useFormikValues = (initialValues, url, options = { authorization: false },
             }
         },
     });
-    console.log("🚀 ~ file: useFormSubmit.js:57 ~ useFormikValues ~ values:", values)
-    console.log("🚀 ~ file: useFormSubmit.js:57 ~ useFormikValues ~ values:", values)
-    console.log("🚀 ~ file: useFormSubmit.js:57 ~ useFormikValues ~ values:", values)
-
     return { values, handleBlur, handleChange, handleSubmit };
 };
 

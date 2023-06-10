@@ -10,7 +10,12 @@ const showToast = (message, type, redirect) => {
     };
     switch (type) {
         case 'success':
-            toast.success(message, { ...toastOptions, onClose: () => { window.location.href = redirect } });
+            toast.success(message, {
+                ...toastOptions, onClose: () => {
+                    redirect ?
+                        window.location.href = redirect : null
+                }
+            });
             break;
         case 'error':
             toast.error(message, toastOptions);
@@ -45,8 +50,8 @@ const ApiRequest = async (url, method, data, options = { authorization: true }) 
             maxRedirects: 1
         };
         const response = await axios(requestConfig);
-        if (response.status !== 200) {
-            throw new Error(`Request failed with status code ${response.status}`);
+        if (response.status === 201) {
+            showToast('Created successfully.', 'success');
         }
         return response.data;
     } catch (error) {

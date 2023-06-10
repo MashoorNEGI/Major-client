@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { Calender } from "src/components/Table/Calendar";
 import { useDaysState } from "src/Func/Data";
 import ApiRequest from "src/API/apirequest";
+import { classes } from "src/utils/subject";
 const Create = () => {
     const [ events, setEvents ] = useState([]);
     const [ input1, setInput1 ] = useState("");
@@ -23,6 +24,7 @@ const Create = () => {
     };
     const handleSubmit = (event) => {
         ApiRequest('create', 'POST', data, { authorization: false })
+        console.log("🚀 ~ file: Create.jsx:26 ~ handleSubmit ~ data:", data)
     };
     return (
         <div style={{ width: "90%", margin: "auto" }}>
@@ -35,9 +37,12 @@ const Create = () => {
                     placeholder="Enter className"
                     onChange={handleInput1Change}
                 >
-                    <option>BCA</option>
-                    <option>BBA</option>
-                    <option>B.com</option>
+                    <option value="" hidden disabled>select...</option>
+                    {classes.map((data, i) => {
+                        return (
+                            <option key={i}>{data}</option>
+                        )
+                    })}
                 </select>
             </div>
             <div className={styles.rbcbtngroup}>
