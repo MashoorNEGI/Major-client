@@ -2,11 +2,11 @@ import React from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'js-cookie';
-import { FaAngleRight, FaAngleLeft, FaBars, FaUsersCog } from 'react-icons/fa';
+import { FaAngleRight, FaAngleLeft, FaBars, FaUsersCog, FaRegAddressCard } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Style from 'src/Pages/css/schedule.module.css';
 import { BiSearchAlt, BiTable } from 'react-icons/bi';
-import { MdMenu, MdOutlineLogout, MdCreate } from 'react-icons/md';
+import { MdMenu, MdOutlineLogout, MdCreate, } from 'react-icons/md';
 
 const Slidebar = ({ show, visible, ICON_SIZE }) => {
     const handleLogout = () => {
@@ -54,6 +54,10 @@ const Slidebar = ({ show, visible, ICON_SIZE }) => {
                         <Link to="/controls/UserRecord" className={Style.navlink}>
                             <FaUsersCog size={ICON_SIZE} />
                             <span>Record</span>
+                        </Link>
+                        <Link to="/controls/register" className={Style.navlink}>
+                            <FaRegAddressCard size={ICON_SIZE} />
+                            <span>Register</span>
                         </Link>
                     </div>
                 </div>

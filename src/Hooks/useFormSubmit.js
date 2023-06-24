@@ -19,7 +19,7 @@ const showToast = (message, type, redirect) => {
 
     switch (type) {
         case 'success':
-            toast.success(message, { ...toastOptions, onClose: () => { window.location.href = redirect } });
+            toast.success(message, { ...toastOptions, onClose: () => { redirect ? window.location.href = redirect : window.location.href = '/' } });
             break;
         case 'error':
             toast.error(message, toastOptions);
@@ -32,7 +32,7 @@ const showToast = (message, type, redirect) => {
     }
 }
 
-const useFormikValues = (initialValues, url, options = { authorization: false }, redirect) => {
+const useFormikValues = (initialValues, url, options = { authorization: false }, redirect, registration) => {
     const { values, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues,
         onSubmit: async (values) => {
@@ -44,8 +44,14 @@ const useFormikValues = (initialValues, url, options = { authorization: false },
                     window.location.href = '/controls';
                 }
                 else {
-                    const res = await ApiRequest(url, 'POST', values, options);
-                    if (res.auth) {
+                    if (registration) {
+                        
+                        const res = await ApiRequest(url, 'POST', values, options);
+                        showToast('Created', 'success');
+                        console.log(registration)
+                    }
+                    else if (res.auth) {
+                        const res = await ApiRequest(url, 'POST', values, options);
                         setLocalStorageItem('Data', res, new Date().getTime() + 3600 * 1000);
                         showToast('You are Logged In', 'success', redirect);
                     }

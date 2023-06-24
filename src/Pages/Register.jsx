@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import withAuth from "src/Hooks/Auth";
 import { Student, Teacher } from "src/components/services/Registers";
 
 const Register = () => {
@@ -11,4 +12,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default withAuth(Register, true)

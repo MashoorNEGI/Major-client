@@ -1,11 +1,9 @@
 import moment from "moment";
 import { v4 as uuidv4 } from "uuid";
 import { removeEventFromDays } from "src/utils/Event";
-import { subject } from "src/utils/subject";
 
-
-export const handleSelect = (days, setDays, events, setEvents) => ({ start, end }) => {
-    createSelectDialog("Select a subject:", subject, (selectedSubject) => {
+export const handleSelect = (days, Subject, setDays, events, setEvents) => ({ start, end }) => {
+    createSelectDialog("Select a subject:", Subject, (selectedSubject) => {
         if (selectedSubject) {
             const startTime = moment(start).format("hh:mm");
             const endTime = moment(end).format("hh:mm");

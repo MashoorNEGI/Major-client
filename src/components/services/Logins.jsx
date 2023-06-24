@@ -17,16 +17,16 @@ export const Teacher = ({ setActiveComponent }) => {
     const handleClick = () => {
         setActiveComponent('student');
     };
-    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(teachervalues, 'users/signin', { authorization: false }, '/view');
+    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(teachervalues, 'users/signin', { authorization: true }, '/view');
     return (
         <>
             <form className={Style.registerform} method='POST' onSubmit={handleSubmit} data-aos="fade-up">
-                <h2>Login</h2>
+                <h2>Teacher Login</h2>
                 <FormGroup label="Email" id="email" name="email" type="text" handleChange={handleChange} handleBlur={handleBlur} value={values.email} required={true} autoComplete='off' />
                 <PasswordInput containerClassName={Style.formgroup} handleChange={handleChange} handleBlur={handleBlur} values={values}
                 />
                 <button type="submit" className='btn'>Login</button><br />
-                <p>Don't have account ?<a href="/register" className='signup'>Register</a></p>
+                <p>Don't have account ?<a href="/contact" className='signup'>Contact</a></p>
                 <hr className='hr' />
                 <a className={Style.asbtn} onClick={handleClick}>
                     <MdAccountCircle />
@@ -41,10 +41,10 @@ export const Student = ({ setActiveComponent }) => {
     const handleClick = () => {
         setActiveComponent('teacher');
     };
-    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(studentvalues, 'student/signin', { authorization: false }, '/view');
+    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(studentvalues, 'student/signin', { authorization: true }, '/view');
     return <>
         <form className={Style.registerform} method='POST' onSubmit={handleSubmit} data-aos="fade-up">
-            <h2>Login</h2>
+            <h2>Student Login</h2>
             <FormGroup label="Enroll No" id="enroll_no" name="enroll_no" type="text" handleChange={handleChange} handleBlur={handleBlur} value={values.enroll_no} required={true} autoComplete='off' />
             <PasswordInput
                 containerClassName={Style.formgroup}
@@ -53,7 +53,7 @@ export const Student = ({ setActiveComponent }) => {
                 values={values}
             />
             <button type="submit" className='btn'>Login</button><br />
-            <p>Don't have account ?<a href="/register" className='signup'>Register</a></p>
+            <p>Don't have account ?<a href="/register" className='signup'>contact</a></p>
             <hr className='hr' />
             <a className={Style.asbtn} onClick={handleClick}>
                 <MdAccountCircle />

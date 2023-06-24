@@ -5,7 +5,7 @@ import FormInput from '../Form/Forminput';
 import useFormikValues from 'src/Hooks/useFormSubmit';
 import PasswordInput from '../Form/PasswordInput';
 import SkillsForm from '../Form/SkillsForm';
-import Select  from 'src/components/Form/select';
+import Select from 'src/components/Form/select';
 const studentvalues = {
     name: "", email: "", enroll_no: "", password: "", classes: ""
 }
@@ -16,9 +16,8 @@ export const Teacher = ({ setActiveComponent }) => {
     const handleClick = () => {
         setActiveComponent('student');
     };
-
-    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(teachervalues, 'users/register', { authorization: false }, '/view');
-
+    const registration = true
+    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(teachervalues, 'users/register', { authorization: false }, '/view', registration);
     return (
         <>
             <form className={Style.registerform} method='POST' onSubmit={handleSubmit} data-aos="fade-up">
@@ -43,7 +42,8 @@ export const Student = ({ setActiveComponent }) => {
     const handleClick = () => {
         setActiveComponent('teacher');
     };
-    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(studentvalues, 'student/register', { authorization: false }, '/view');
+    const registration = true
+    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(studentvalues, 'student/register', { authorization: false }, '/view', registration);
     return (
         <>
             <form className={Style.registerform} method='POST' onSubmit={handleSubmit} data-aos="fade-up">

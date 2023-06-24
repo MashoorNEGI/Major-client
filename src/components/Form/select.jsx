@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Style from "src/components/css/Login.module.css";
-import { classes } from "src/utils/subject";
+import { courses } from "src/utils/subject";
 
 const FormInput = ({
   label,
@@ -27,7 +27,7 @@ const FormInput = ({
       autoComplete="off"
     >
         <option value="" hidden disabled>select...</option>
-      {classes.map((data, i) => {
+      {courses.map((data, i) => {
         return <option key={i}>{data}</option>;
       })}
     </select>

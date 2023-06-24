@@ -27,7 +27,6 @@ const Routes = () => (
             <Switch>
                 <Route path="/" element={<Home />}>
                     <Route index element={<Index />} />
-                    <Route path="register" element={<Registers />} />
                     <Route path="login" element={(getLocalStorageItem('Data') ? <Navigate replace to="/view" /> : <Login />)} />
                     <Route path="view" element={<Schedule />}>
                         <Route path=":name" element={<Timetable />} />
@@ -36,6 +35,7 @@ const Routes = () => (
                     </Route>
                     <Route path="controls" element={<Controls />}>
                         <Route path="search" element={<Search />} />
+                        <Route path="register" element={<Registers />} />
                         <Route path=":name" element={<Timetable />} />
                         <Route path="Create" element={<Create />} />
                         <Route path="UserRecord" element={<UserRecord />} />

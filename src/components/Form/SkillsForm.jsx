@@ -31,9 +31,13 @@ const SkillsForm = ({ teachervalues, setTeachervalues }) => {
           <option value="" hidden disabled>
             select...
           </option>
-          {subject.map((data, i) => {
-            return <option key={i}>{data}</option>;
-          })}
+          {Object.keys(subject).map((courseName) => (
+            Object.keys(subject[ courseName ]).map((semester) => (
+              subject[ courseName ][ semester ].map((data, i) => (
+                <option key={i}>{data.subjectName}</option>
+              ))
+            ))
+          ))}
         </select>
         <ul style={{ listStyleType: "none", padding: 0, margin: "20px" }}>
           {skills.map((skill, index) => (
