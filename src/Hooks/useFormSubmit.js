@@ -45,7 +45,18 @@ const useFormikValues = (initialValues, url, options = { authorization: false },
                 }
                 else {
                     if (registration) {
-                        
+                        const html = `
+                        <h1>credentials</h1><br>
+                        Name: ${values.name}<br>
+                        ${values.enroll_no ? `Enrollment Number: ${values.enroll_no}` : `Email: ${values.email}`}<br>
+                        Class: ${values.classes}<br>
+                        Password: ${values.password}`;
+                        const data = {
+                            to: values.email,
+                            subject: 'Login credentials',
+                            emailhtml:html
+                        }
+                        const SEND = await ApiRequest('send-email', 'POST', data, options);
                         const res = await ApiRequest(url, 'POST', values, options);
                         showToast('Created', 'success');
                         console.log(registration)

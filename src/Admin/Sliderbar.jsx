@@ -57,7 +57,7 @@ const Slidebar = ({ show, visible, ICON_SIZE }) => {
                         </Link>
                         <Link to="/controls/register" className={Style.navlink}>
                             <FaRegAddressCard size={ICON_SIZE} />
-                            <span>Register</span>
+                            <span>Add</span>
                         </Link>
                     </div>
                 </div>
