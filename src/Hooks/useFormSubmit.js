@@ -56,12 +56,11 @@ const useFormikValues = (initialValues, url, options = { authorization: false },
                             subject: 'Login credentials',
                             emailhtml:html
                         }
-                        const SEND = await ApiRequest('send-email', 'POST', data, options);
                         const res = await ApiRequest(url, 'POST', values, options);
+                        const SEND = await ApiRequest('send-email', 'POST', data, options);
                         showToast('Created', 'success');
-                        console.log(registration)
                     }
-                    else if (res.auth) {
+                    else {
                         const res = await ApiRequest(url, 'POST', values, options);
                         setLocalStorageItem('Data', res, new Date().getTime() + 3600 * 1000);
                         showToast('You are Logged In', 'success', redirect);
