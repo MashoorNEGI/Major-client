@@ -11,7 +11,7 @@
     box-shadow: 0px 0px 5px 0px black;
 }
 .registerform a {
-    color: var(--body_link);
+    color:grey;
 }
 
 .registerform h2 {

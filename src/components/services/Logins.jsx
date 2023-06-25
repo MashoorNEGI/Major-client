@@ -5,6 +5,7 @@ import useFormikValues from 'src/Hooks/useFormSubmit';
 import FormGroup from '../Form/FormGroup';
 import PasswordInput from '../Form/PasswordInput';
 import 'react-toastify/dist/ReactToastify.css'
+import { NavLink } from 'react-router-dom';
 const studentvalues = {
     enroll_no: "",
     password: ""
@@ -26,7 +27,8 @@ export const Teacher = ({ setActiveComponent }) => {
                 <PasswordInput containerClassName={Style.formgroup} handleChange={handleChange} handleBlur={handleBlur} values={values}
                 />
                 <button type="submit" className='btn'>Login</button><br />
-                <p>Don't have account ?<a href="/contact" className='signup'>Contact</a></p>
+                <p style={{ color: 'grey', fontWeight:'lighter' }}>Don't have account ?<a href="/contact" className='signup'>  Contact</a></p>
+                <p style={{ marginTop: '10px', fontWeight: 'bold' }}>Forgot password<a href="/password-reset" className='signup'>  Click here</a></p>
                 <hr className='hr' />
                 <a className={Style.asbtn} onClick={handleClick}>
                     <MdAccountCircle />
@@ -53,7 +55,8 @@ export const Student = ({ setActiveComponent }) => {
                 values={values}
             />
             <button type="submit" className='btn'>Login</button><br />
-            <p>Don't have account ?<a href="/register" className='signup'>contact</a></p>
+            <p style={{ color: 'grey', fontWeight: 'lighter' }}>Don't have account ?<a href="/contact" className='signup'>  Contact</a></p>
+            <p style={{ marginTop: '10px', fontWeight: 'bold' }}>Forgot password<a href="/password-reset" className='signup'>  Click here</a></p>
             <hr className='hr' />
             <a className={Style.asbtn} onClick={handleClick}>
                 <MdAccountCircle />

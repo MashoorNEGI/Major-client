@@ -12,6 +12,8 @@ import Create from 'src/Admin/Create';
 import Registers from 'src/Pages/Register';
 import UserRecord from 'src/Admin/UserRecord';
 import TeacherRecord from 'src/Admin/TeacherRecord';
+import Passwordreset from 'src/Pages/Passwordreset';
+import ForgotPassword from 'src/Pages/ForgotPassword';
 
 const Home = lazy(() => import('src/Pages/Home'));
 const About = lazy(() => import('src/Pages/About'));
@@ -27,6 +29,8 @@ const Routes = () => (
             <Switch>
                 <Route path="/" element={<Home />}>
                     <Route index element={<Index />} />
+                    <Route path="password-reset" element={<Passwordreset />} />
+                    <Route path="forgotpassword" element={<ForgotPassword />} />
                     <Route path="login" element={(getLocalStorageItem('Data') ? <Navigate replace to="/view" /> : <Login />)} />
                     <Route path="view" element={<Schedule />}>
                         <Route path=":name" element={<Timetable />} />
