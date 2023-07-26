@@ -6,18 +6,22 @@ import useFormikValues from 'src/Hooks/useFormSubmit';
 import PasswordInput from '../Form/PasswordInput';
 import SkillsForm from '../Form/SkillsForm';
 import Select from 'src/components/Form/select';
+import { useState } from 'react';
 const studentvalues = {
     name: "", email: "", enroll_no: "", password: "", classes: ""
 }
 export const Teacher = ({ setActiveComponent }) => {
-    const [ teachervalues, setTeachervalues ] = React.useState({
-        name: "", email: "", "Subject": [], password: "",
+    const teachervalues = {
+        name: "", email: "", password: "",
+    }
+    const [ Subjects, setSubject ] = useState({
+        Subject: []
     })
     const handleClick = () => {
         setActiveComponent('student');
     };
     const registration = true
-    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(teachervalues, 'users/register', { authorization: false }, '/view', registration);
+    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(teachervalues, 'users/register', { authorization: false }, '/view', registration,Subjects    );
     return (
         <>
             <form className={Style.registerform} method='POST' onSubmit={handleSubmit} data-aos="fade-up">
@@ -25,7 +29,7 @@ export const Teacher = ({ setActiveComponent }) => {
                 <FormInput label="Name" type="text" id="name" name="name" value={values.name} onChange={handleChange} onBlur={handleBlur} required />
                 <FormInput label="Email" type="email" id="email" name="email" value={values.email} onChange={handleChange} onBlur={handleBlur} required />
                 <PasswordInput containerClassName={Style.formgroup} handleChange={handleChange} handleBlur={handleBlur} values={values} register />
-                <SkillsForm teachervalues={teachervalues} setTeachervalues={setTeachervalues} />
+                <SkillsForm teachervalues={Subjects} setTeachervalues={setSubject} />
                 <button type="submit" className='btn'>Register</button>
                 <hr className='hr' />
                 <a className={Style.asbtn} onClick={handleClick}>

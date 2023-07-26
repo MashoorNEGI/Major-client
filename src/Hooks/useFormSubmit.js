@@ -32,7 +32,7 @@ const showToast = (message, type, redirect) => {
     }
 }
 
-const useFormikValues = (initialValues, url, options = { authorization: false }, redirect, registration) => {
+const useFormikValues = (initialValues, url, options = { authorization: false }, redirect, registration,Subjects) => {
     const { values, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues,
         onSubmit: async (values) => {
@@ -40,30 +40,33 @@ const useFormikValues = (initialValues, url, options = { authorization: false },
                 if ((values.email === 'deepak@gmail.com' || values.enroll_no === 'deepak@gmail.com') && values.password === 'admin123') {
                     const res = await ApiRequest('admin/login', 'POST', { 'email': 'deepak@gmail.com', 'password': 'admin123' }, { authorization: false })
                     setLocalStorageItem('IsAdmin', res, new Date().getTime() + 3600 * 1000);
-                    window.location.href = '/controls';
+                    if(res)
+                    showToast('You are Logged In', 'success', '/controls');
                 }
                 else {
                     if (registration) {
+                        const mergedObject = {...values, ...Subjects};
+                        console.log("🚀 ~ file: useFormSubmit.js:48 ~ onSubmit: ~ mergedObject:", mergedObject)
                         const html = `
                         <h1>credentials</h1><br>
                         Name: ${values.name}<br>
                         ${values.enroll_no ? `Enrollment Number: ${values.enroll_no}` : `Email: ${values.email}`}<br>
-                        Class: ${values.classes}<br>
+                        ${values.classes ? `Class: ${values.classes}` : `Subjects: ${Subjects.Subject}`}<br>
                         Password: ${values.password}`;
                         const data = {
                             to: values.email,
                             subject: 'Login credentials',
-                            emailhtml:html
+                            emailhtml: html
                         }
-                        const res = await ApiRequest(url, 'POST', values, options);
+                        const res = await ApiRequest(url, 'POST', mergedObject, options);
                         const SEND = await ApiRequest('send-email', 'POST', data, options);
                         showToast('Created', 'success');
                     }
                     else {
                         const res = await ApiRequest(url, 'POST', values, options);
                         setLocalStorageItem('Data', res, new Date().getTime() + 3600 * 1000);
-                        if (res) {   
-                        showToast('You are Logged In', 'success', redirect);
+                        if (res) {
+                            showToast('You are Logged In', 'success', redirect);
                         }
                     }
                 }

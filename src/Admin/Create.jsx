@@ -16,8 +16,9 @@ const Create = () => {
     const [ days, setDays ] = useDaysState()
     const Start = moment().startOf("day").set({ hour: 8, minute: 30 });
     const end = moment().startOf("day").set({ hour: 17, minute: 30 });
-    const data = { start_time: `0${Start.hour()}:${Start.minute()}`, end_time: `${end.hour()}:${end.minute()}`, className: courseName + " - " + semester.split(" ")[ 1 ], days }
+    const data = { start_time: `0${Start.hour()}:${Start.minute()}`, end_time: `${end.hour()}:${end.minute()}`, className: courseName + "-" + semester.split(" ")[ 1 ], days }
     const localizer = momentLocalizer(moment);
+    console.log("🚀 ~ file: Create.jsx:21 ~ Create ~ data:", data)
     const onSelect = handleSelect(days, Subject, setDays, events, setEvents);
     const onKeyPress = handleKeyPress(days, setDays, events, setEvents);
 
@@ -28,12 +29,10 @@ const Create = () => {
         const inputSemester = event.target.value.toLowerCase(); // Convert the input semester to lowercase
         setSemester(event.target.value);
         const selectedSubjects = subject[ courseName ]?.[ inputSemester ].map((subject) => subject.subjectName) || [];
-        console.log("🚀 ~ file: Create.jsx:30 ~ handleSemesterChange ~ selectedSubjects:", selectedSubjects)
         setSubjects(selectedSubjects);
     };
     const handleSubmit = (event) => {
         ApiRequest('create', 'POST', data, { authorization: false })
-        console.log("🚀 ~ file: Create.jsx:26 ~ handleSubmit ~ data:", data)
     };
     return (
         <div style={{ width: "90%", margin: "auto" }}>

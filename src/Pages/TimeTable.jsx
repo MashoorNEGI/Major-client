@@ -12,7 +12,7 @@ function Timetable() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const endpoint = name.length > 4 ? `users/timetable/${name}` : `student/timetable/${name}`;
+        const endpoint = name.includes('-') ? `student/timetable/${name}` : `users/timetable/${name}`;
         const response = await ApiRequest(endpoint, 'GET', null, { authorization: true });
         setTimetableData(response);
       } catch (error) {
@@ -31,8 +31,8 @@ function Timetable() {
 
   return (
     <div className={`div-center ${printMode ? 'print-mode' : ''}`}>
-      {timetableData ?<> <h1 className='text-center'>{name} Timetable</h1>
-       <Time onclick={handlePrint} timetable={timetableData} /></> : <APIloader />}
+      {timetableData ? <> <h1 className='text-center'>{name} Timetable</h1>
+        <Time onclick={handlePrint} timetable={timetableData} /></> : <APIloader />}
     </div>
   );
 }

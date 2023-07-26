@@ -1,6 +1,5 @@
 import moment from "moment";
 import { v4 as uuidv4 } from "uuid";
-import { removeEventFromDays } from "src/utils/Event";
 
 export const handleSelect = (days, Subject, setDays, events, setEvents) => ({ start, end }) => {
     createSelectDialog("Select a subject:", Subject, (selectedSubject) => {
@@ -84,7 +83,13 @@ export const handleKeyPress = (days, setDays, events, setEvents) => (event) => {
     if (event.key === "Delete") {
         const eventId = event.currentTarget.dataset.id;
         const removedEvent = events.find((event) => event.id === eventId);
-        const updatedDays = removeEventFromDays(days, removedEvent);
+
+        // Remove the event from the days array
+        const updatedDays = days.map((day) => ({
+            ...day,
+            periods: day.periods.filter((period) => period.subject !== removedEvent.subject),
+        }));
+
         setEvents(events.filter((event) => event.id !== eventId));
         setDays(updatedDays);
     }

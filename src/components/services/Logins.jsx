@@ -18,7 +18,7 @@ export const Teacher = ({ setActiveComponent }) => {
     const handleClick = () => {
         setActiveComponent('student');
     };
-    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(teachervalues, 'users/signin', { authorization: true }, '/view');
+    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(teachervalues, 'users/signin', { authorization: false }, '/view');
     return (
         <>
             <form className={Style.registerform} method='POST' onSubmit={handleSubmit} data-aos="fade-up">
@@ -43,7 +43,7 @@ export const Student = ({ setActiveComponent }) => {
     const handleClick = () => {
         setActiveComponent('teacher');
     };
-    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(studentvalues, 'student/signin', { authorization: true }, '/view');
+    const { handleSubmit, handleBlur, handleChange, values } = useFormikValues(studentvalues, 'student/signin', { authorization: false }, '/view');
     return <>
         <form className={Style.registerform} method='POST' onSubmit={handleSubmit} data-aos="fade-up">
             <h2>Student Login</h2>
